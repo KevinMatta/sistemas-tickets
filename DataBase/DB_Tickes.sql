@@ -223,10 +223,13 @@ CREATE TABLE
 		Fncs_Fecha DATETIME,
 		Obrs_Id INT,
 		--auditoria
-		GnOb_Creacion INT NOT NULL,
-		GnOb_FechaCreacion DATE NOT NULL,
-		GnOb_Modifica INT,
-		GnOb_Estado BIT,
+		Fncs_Creacion INT NOT NULL,
+		Fncs_FechaCreacion DATE NOT NULL,
+		Fncs_Modifica INT,
+		Fncs_Estado BIT,
+		CONSTRAINT FK_tbFunciones_tbObras_Obrs_Id FOREIGN KEY (Obrs_Id) REFERENCES Teat.tbObras (Obrs_Id),
+		CONSTRAINT FK_tbFunciones_tbUsuarios_Fncs_Creacion FOREIGN KEY (Fncs_Creacion) REFERENCES Acce.tbUsuarios (Usro_Id),
+		CONSTRAINT FK_tbFunciones_tbUsuarios_Fncs_Modifica FOREIGN KEY (Fncs_Modifica) REFERENCES Acce.tbUsuarios (Usro_Id)
 	);
 
 GO
