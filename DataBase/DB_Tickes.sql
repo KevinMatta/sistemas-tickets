@@ -335,7 +335,6 @@ GO
 CREATE TABLE
 	Teat.tbVentasDetalle (
 		VtDe_Id INT IDENTITY (1, 1) PRIMARY KEY,
-		VtDe_Boleto VARCHAR(15) UNIQUE,
     VtDe_Cantidad INT,
 		Vnts_Id INT,
 		Secc_Id INT,
@@ -355,18 +354,19 @@ CREATE TABLE
 GO
 CREATE TABLE
   Teat.tbBoletos (
-    Btls_Id INT IDENTITY (1, 1) PRIMARY KEY,
+    Blts_Id INT IDENTITY (1, 1) PRIMARY KEY,
+    Blts_Codigo VARCHAR(8) UNIQUE,
     VtDe_Id INT,
     Asnt_Id INT,
     --auditoria
-    Btls_Creacion INT NOT NULL,
-    Btls_FechaCreacion DATETIME NOT NULL,
-    Btls_Modifica INT,
-    Btls_Estado BIT,
+    Blts_Creacion INT NOT NULL,
+    Blts_FechaCreacion DATETIME NOT NULL,
+    Blts_Modifica INT,
+    Blts_Estado BIT,
     CONSTRAINT FK_tbBoletos_tbVentasDetalle_VtDe_Id FOREIGN KEY (VtDe_Id) REFERENCES Teat.tbVentasDetalle (VtDe_Id),
     CONSTRAINT FK_tbBoletos_tbAsientos_Asnt_Id FOREIGN KEY (Asnt_Id) REFERENCES Teat.tbAsientos (Asnt_Id),
-    CONSTRAINT FK_tbBoletos_tbUsuarios_Btls_Creacion FOREIGN KEY (Btls_Creacion) REFERENCES Acce.tbUsuarios (Usro_Id),
-    CONSTRAINT FK_tbBoletos_tbUsuarios_Btls_Modifica FOREIGN KEY (Btls_Modifica) REFERENCES Acce.tbUsuarios (Usro_Id)
+    CONSTRAINT FK_tbBoletos_tbUsuarios_Blts_Creacion FOREIGN KEY (Blts_Creacion) REFERENCES Acce.tbUsuarios (Usro_Id),
+    CONSTRAINT FK_tbBoletos_tbUsuarios_Blts_Modifica FOREIGN KEY (Blts_Modifica) REFERENCES Acce.tbUsuarios (Usro_Id)
   );
 GO
 --INICIO DE PROCEDIMIINETOS ALMACENADOS
@@ -1002,8 +1002,7 @@ END;
 GO
 
 --PROCEDIMIENTOS ALMACENADOS PARA VENTAS DETALLE
-CREATE PROCEDURE sp_InsertarVentaDetalle
-    @VtDe_Boleto VARCHAR(15),
+CREATE PROCEDURE spInsertarVentaDetalle
     @VtDe_Cantidad INT,
     @Vnts_Id INT,
     @Secc_Id INT,
@@ -1014,13 +1013,12 @@ CREATE PROCEDURE sp_InsertarVentaDetalle
     @VtDe_Estado BIT
 AS
 BEGIN
-    INSERT INTO Teat.tbVentasDetalle (VtDe_Boleto, VtDe_Cantidad, Vnts_Id, Secc_Id, Fncs_Id, VtDe_Creacion, VtDe_FechaCreacion, VtDe_Modifica, VtDe_Estado)
-    VALUES (@VtDe_Boleto, @VtDe_Cantidad, @Vnts_Id, @Secc_Id, @Fncs_Id, @VtDe_Creacion, @VtDe_FechaCreacion, @VtDe_Modifica, @VtDe_Estado);
+    INSERT INTO Teat.tbVentasDetalle (VtDe_Cantidad, Vnts_Id, Secc_Id, Fncs_Id, VtDe_Creacion, VtDe_FechaCreacion, VtDe_Modifica, VtDe_Estado)
+    VALUES (@VtDe_Cantidad, @Vnts_Id, @Secc_Id, @Fncs_Id, @VtDe_Creacion, @VtDe_FechaCreacion, @VtDe_Modifica, @VtDe_Estado);
 END;
 GO --UPDATE
-CREATE PROCEDURE sp_ActualizarVentaDetalle
+CREATE PROCEDURE spActualizarVentaDetalle
     @VtDe_Id INT,
-    @VtDe_Boleto VARCHAR(15),
     @VtDe_Cantidad INT,
     @Vnts_Id INT,
     @Secc_Id INT,
@@ -1030,8 +1028,7 @@ CREATE PROCEDURE sp_ActualizarVentaDetalle
 AS
 BEGIN
     UPDATE Teat.tbVentasDetalle
-    SET VtDe_Boleto = @VtDe_Boleto,
-        VtDe_Cantidad = @VtDe_Cantidad,
+    SET VtDe_Cantidad = @VtDe_Cantidad,
         Vnts_Id = @Vnts_Id,
         Secc_Id = @Secc_Id,
         Fncs_Id = @Fncs_Id,
@@ -1040,7 +1037,7 @@ BEGIN
     WHERE VtDe_Id = @VtDe_Id;
 END;
 GO --DELETE
-CREATE PROCEDURE sp_EliminarVentaDetalle
+CREATE PROCEDURE spEliminarVentaDetalle
     @VtDe_Id INT
 AS
 BEGIN
@@ -1049,40 +1046,43 @@ BEGIN
 END;
 GO
 
---PROCEDIMIENTOS ALMACENADOS PARA 
-CREATE PROCEDURE sp_InsertarBoleto
+--PROCEDIMIENTOS ALMACENADOS PARA BOLETOS
+CREATE PROCEDURE spInsertarBoleto
+    @Blts_Codigo VARCHAR(8),
     @VtDe_Id INT,
     @Asnt_Id INT,
-    @Btls_Creacion INT,
-    @Btls_FechaCreacion DATETIME,
-    @Btls_Modifica INT,
-    @Btls_Estado BIT
+    @Blts_Creacion INT,
+    @Blts_FechaCreacion DATETIME,
+    @Blts_Modifica INT,
+    @Blts_Estado BIT
 AS
 BEGIN
-    INSERT INTO Teat.tbBoletos (VtDe_Id, Asnt_Id, Btls_Creacion, Btls_FechaCreacion, Btls_Modifica, Btls_Estado)
-    VALUES (@VtDe_Id, @Asnt_Id, @Btls_Creacion, @Btls_FechaCreacion, @Btls_Modifica, @Btls_Estado);
+    INSERT INTO Teat.tbBoletos (Blts_Codigo, VtDe_Id, Asnt_Id, Blts_Creacion, Blts_FechaCreacion, Blts_Modifica, Blts_Estado)
+    VALUES (@Blts_Codigo, @VtDe_Id, @Asnt_Id, @Blts_Creacion, @Blts_FechaCreacion, @Blts_Modifica, @Blts_Estado);
 END;
 GO --UPDATE
-CREATE PROCEDURE sp_ActualizarBoleto
-    @Btls_Id INT,
+CREATE PROCEDURE spActualizarBoleto
+    @Blts_Id INT,
+    @Blts_Codigo VARCHAR(8),
     @VtDe_Id INT,
     @Asnt_Id INT,
-    @Btls_Modifica INT,
-    @Btls_Estado BIT
+    @Blts_Modifica INT,
+    @Blts_Estado BIT
 AS
 BEGIN
     UPDATE Teat.tbBoletos
-    SET VtDe_Id = @VtDe_Id,
+    SET Blts_Codigo = @Blts_Codigo,
+        VtDe_Id = @VtDe_Id,
         Asnt_Id = @Asnt_Id,
-        Btls_Modifica = @Btls_Modifica,
-        Btls_Estado = @Btls_Estado
-    WHERE Btls_Id = @Btls_Id;
+        Blts_Modifica = @Blts_Modifica,
+        Blts_Estado = @Blts_Estado
+    WHERE Blts_Id = @Blts_Id;
 END;
 GO --DELETE
-CREATE PROCEDURE sp_EliminarBoleto
-    @Btls_Id INT
+CREATE PROCEDURE spEliminarBoleto
+    @Blts_Id INT
 AS
 BEGIN
     DELETE FROM Teat.tbBoletos
-    WHERE Btls_Id = @Btls_Id;
+    WHERE Blts_Id = @Blts_Id;
 END;
