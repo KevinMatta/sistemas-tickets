@@ -17,7 +17,7 @@ CREATE TABLE
 		Usro_Rol VARCHAR(20),
 		Prsn_Id INT,
 		Usro_Creacion INT, --NOT NULL,
-		Usro_FechaCreacion DATE NOT NULL,
+		Usro_FechaCreacion DATETIME NOT NULL,
 		Usro_Modifica INT,
 		Usro_Estado BIT,
 		--CONSTRAINT FK_tbUsuarios_tbPersonas_Prsn_Id FOREIGN KEY (Prsn_Id) REFERENCES Gene.tbPersonas(Prsn_Id),
@@ -37,7 +37,7 @@ INSERT INTO
 		Usro_Estado
 	)
 VALUES
-	('Admin', 1, 1, GETDATE (), 1);
+	('Admin', 1, 1, GETDATETIME (), 1);
 
 GO
 -- AGREGAMOS LOS CONSTRAINTS PARA Usro_Creacion, Usro_Modifica
@@ -49,8 +49,8 @@ ALTER TABLE Acce.tbUsuarios
 ALTER COLUMN Usro_Creacion INT NOT NULL;
 
 GO
--- --UPDATE AL Usro_Creacion y le hacemos referencia a si mismo
--- UPDATE Acce.tbUsuarios
+-- --UPDATETIME AL Usro_Creacion y le hacemos referencia a si mismo
+-- UPDATETIME Acce.tbUsuarios
 -- SET Usro_Crecion = 1
 -- WHERE Usro_Id = 1;
 -- GO
@@ -60,7 +60,7 @@ CREATE TABLE
 		EsCi_Id INT IDENTITY (1, 1) PRIMARY KEY,
 		EsCi_Descripcion CHAR,
 		EsCi_Creacion INT NOT NULL,
-		EsCi_FechaCreacion DATE NOT NULL,
+		EsCi_FechaCreacion DATETIME NOT NULL,
 		EsCi_Modifica INT,
 		EsCi_Estado BIT,
 		CONSTRAINT CK_tbEstadosCiviles_EsCi_Descripcion CHECK (EsCi_Descripcion IN ('S', 'C', 'D', 'V', 'U')),
@@ -75,10 +75,10 @@ CREATE TABLE
 		Prsn_Nombre VARCHAR(20),
 		Prsn_Apellido VARCHAR(20),
 		Prsn_Sexo CHAR(1),
-		Prsn_FechaNacimiento DATE,
+		Prsn_FechaNacimiento DATETIME,
 		EsCi_Id INT,
 		Prsn_Creacion INT NOT NULL,
-		Prsn_FechaCreacion DATE NOT NULL,
+		Prsn_FechaCreacion DATETIME NOT NULL,
 		Prsn_Modifica INT,
 		Prsn_Estado BIT,
 		CONSTRAINT CK_tbPersonas_Prsn_Sexo CHECK (Prsn_Sexo IN ('F', 'M')),
@@ -97,11 +97,11 @@ INSERT INTO
 		EsCi_Estado
 	)
 VALUES
-	('S', 1, GETDATE (), 1),
-	('C', 1, GETDATE (), 1),
-	('D', 1, GETDATE (), 1),
-	('V', 1, GETDATE (), 1),
-	('U', 1, GETDATE (), 1);
+	('S', 1, GETDATETIME (), 1),
+	('C', 1, GETDATETIME (), 1),
+	('D', 1, GETDATETIME (), 1),
+	('V', 1, GETDATETIME (), 1),
+	('U', 1, GETDATETIME (), 1);
 
 GO
 --AGREGAMOS EL PRIMER REGISTRO DE LA PERSONA QUE SERA EL ADMINISTRADOR
@@ -124,7 +124,7 @@ VALUES
 		'2001-06-25',
 		1,
 		1,
-		GETDATE (),
+		GETDATETIME (),
 		1
 	);
 
@@ -134,7 +134,7 @@ ALTER TABLE Acce.tbUsuarios ADD
 -- Prsn_Id INT,
 CONSTRAINT FK_tbUsuarios_tbPersonas_Prsn_Id FOREIGN KEY (Prsn_Id) REFERENCES Gene.tbPersonas (Prsn_Id)
 -- -- ACTULIZAMOS EL CAMPO QUE QUEDO NULO DE LA TABLA USUARIOS PARA QUE HAGA REFENRENCIA A LA PERSONA
--- UPDATE Acce.tbUsuarios
+-- UPDATETIME Acce.tbUsuarios
 -- SET Prsn_Id = 1
 -- WHERE Usro_Id = 1;
 -- CONTINUAMOS CREANDO LAS TABLAS
@@ -146,7 +146,7 @@ CREATE TABLE
 		Empl_Salario INT,
 		Prsn_Id INT,
 		Empl_Creacion INT NOT NULL,
-		Empl_FechaCreacion DATE NOT NULL,
+		Empl_FechaCreacion DATETIME NOT NULL,
 		Empl_Modifica INT,
 		Empl_Estado BIT,
 		CONSTRAINT FK_tbEmpleados_tbPersonas_Prsn_Id FOREIGN KEY (Prsn_Id) REFERENCES Gene.tbPersonas (Prsn_Id),
@@ -161,7 +161,7 @@ CREATE TABLE
 		Estd_Descripcion VARCHAR(20),
 		--auditoria
 		Estd_Creacion INT NOT NULL,
-		Estd_FechaCreacion DATE NOT NULL,
+		Estd_FechaCreacion DATETIME NOT NULL,
 		Estd_Modifica INT,
 		Estd_Estado BIT,
 		CONSTRAINT FK_tbEstados_tbUsuarios_Estd_Creacion FOREIGN KEY (Estd_Creacion) REFERENCES Acce.tbUsuarios (Usro_Id),
@@ -176,7 +176,7 @@ CREATE TABLE
 		Estd_Id INT,
 		--auditoria
 		Ciud_Creacion INT NOT NULL,
-		Ciud_FechaCreacion DATE NOT NULL,
+		Ciud_FechaCreacion DATETIME NOT NULL,
 		Ciud_Modifica INT,
 		Ciud_Estado BIT,
 		CONSTRAINT FK_tbCiudades_tbEstados_Estd_Id FOREIGN KEY (Estd_Id) REFERENCES Gene.tbEstados (Estd_Id),
@@ -191,7 +191,7 @@ CREATE TABLE
 		Obrs_Descripcion VARCHAR(20),
 		--auditoria
 		Obrs_Creacion INT NOT NULL,
-		Obrs_FechaCreacion DATE NOT NULL,
+		Obrs_FechaCreacion DATETIME NOT NULL,
 		Obrs_Modifica INT,
 		Obrs_Estado BIT,
 		CONSTRAINT FK_tbObras_tbUsuarios_Obrs_Creacion FOREIGN KEY (Obrs_Creacion) REFERENCES Acce.tbUsuarios (Usro_Id),
@@ -207,7 +207,7 @@ CREATE TABLE
 		Prsn_Id INT,
 		--auditoria
 		Prtp_Creacion INT NOT NULL,
-		Prtp_FechaCreacion DATE NOT NULL,
+		Prtp_FechaCreacion DATETIME NOT NULL,
 		Prtp_Modifica INT,
 		Prtp_Estado BIT,
 		CONSTRAINT FK_tbParticipantes_tbPersonas_Prsn_Id FOREIGN KEY (Prsn_Id) REFERENCES Gene.tbPersonas (Prsn_Id),
@@ -220,11 +220,11 @@ GO
 CREATE TABLE
 	Teat.tbFunciones (
 		Fncs_Id INT IDENTITY (1, 1) PRIMARY KEY,
-		Fncs_Fecha DATETIME,
+		Fncs_Fecha DATETIMETIME,
 		Obrs_Id INT,
 		--auditoria
 		Fncs_Creacion INT NOT NULL,
-		Fncs_FechaCreacion DATE NOT NULL,
+		Fncs_FechaCreacion DATETIME NOT NULL,
 		Fncs_Modifica INT,
 		Fncs_Estado BIT,
 		CONSTRAINT FK_tbFunciones_tbObras_Obrs_Id FOREIGN KEY (Obrs_Id) REFERENCES Teat.tbObras (Obrs_Id),
@@ -240,7 +240,7 @@ CREATE TABLE
 		Ciud_Id INT,
 		--auditoria
 		Teat_Creacion INT NOT NULL,
-		Teat_FechaCreacion DATE NOT NULL,
+		Teat_FechaCreacion DATETIME NOT NULL,
 		Teat_Modifica INT,
 		Teat_Estado BIT,
 		CONSTRAINT FK_tbTeatros_tbCiudades_Ciud_Id FOREIGN KEY (Ciud_Id) REFERENCES Gene.tbCiudades (Ciud_Id),
@@ -256,7 +256,7 @@ CREATE TABLE
 		Fncs_Id INT,
 		--auditoria
 		Sala_Creacion INT NOT NULL,
-		Sala_FechaCreacion DATE NOT NULL,
+		Sala_FechaCreacion DATETIME NOT NULL,
 		Sala_Modifica INT,
 		Sala_Estado BIT,
 		CONSTRAINT FK_tbSalas_tbFunciones_Fncs_Id FOREIGN KEY (Fncs_Id) REFERENCES Teat.tbFunciones (Fncs_Id),
@@ -272,7 +272,7 @@ CREATE TABLE
 		Sala_Id INT,
 		--auditoria
 		SaTe_Creacion INT NOT NULL,
-		SaTe_FechaCreacion DATE NOT NULL,
+		SaTe_FechaCreacion DATETIME NOT NULL,
 		SaTe_Modifica INT,
 		SaTe_Estado BIT,
 		CONSTRAINT FK_tbSalasPorTeatros_tbTeatros_Teat_Id FOREIGN KEY (Teat_Id) REFERENCES Teat.tbTeatros (Teat_Id),
@@ -286,10 +286,11 @@ CREATE TABLE
 	Teat.tbSecciones (
 		Secc_Id INT IDENTITY (1, 1) PRIMARY KEY,
 		Secc_Descripcion VARCHAR(20),
+    Secc_Precio MONEY,
 		SaTe_Id INT,
 		--auditoria
 		Secc_Creacion INT NOT NULL,
-		Secc_FechaCreacion DATE NOT NULL,
+		Secc_FechaCreacion DATETIME NOT NULL,
 		Secc_Modifica INT,
 		Secc_Estado BIT,
 		CONSTRAINT FK_tbSecciones_tbSalasPorTeatros_SaTe_Id FOREIGN KEY (SaTe_Id) REFERENCES Teat.tbSalasPorTeatros (SaTe_Id),
@@ -299,30 +300,15 @@ CREATE TABLE
 
 GO
 CREATE TABLE
-	Teat.tbPrecios (
-		Prco_Id INT IDENTITY (1, 1) PRIMARY KEY,
-		--auditoria
-		Prco_Creacion INT NOT NULL,
-		Prco_FechaCreacion DATE NOT NULL,
-		Prco_Modifica INT,
-		Prco_Estado BIT,
-		CONSTRAINT FK_tbPrecios_tbUsuarios_Prco_Creacion FOREIGN KEY (Prco_Creacion) REFERENCES Acce.tbUsuarios (Usro_Id),
-		CONSTRAINT FK_tbPrecios_tbUsuarios_Prco_Modifica FOREIGN KEY (Prco_Modifica) REFERENCES Acce.tbUsuarios (Usro_Id)
-	);
-
-GO
-CREATE TABLE
 	Teat.tbAsientos (
 		Asnt_Id INT IDENTITY (1, 1) PRIMARY KEY,
 		Asnt_Descripcion VARCHAR(20),
 		Secc_Id INT,
-		Prco_Id INT,
 		--auditoria
 		Asnt_Creacion INT NOT NULL,
-		Asnt_FechaCreacion DATE NOT NULL,
+		Asnt_FechaCreacion DATETIME NOT NULL,
 		Asnt_Modifica INT,
 		Asnt_Estado BIT,
-		CONSTRAINT FK_tbAsientos_tbPrecios_Prco_Id FOREIGN KEY (Prco_Id) REFERENCES Teat.tbPrecios (Prco_Id),
 		CONSTRAINT FK_tbAsientos_tbSecciones_Secc_Id FOREIGN KEY (Secc_Id) REFERENCES Teat.tbSecciones (Secc_Id),
 		CONSTRAINT FK_tbAsientos_tbUsuarios_Asnt_Creacion FOREIGN KEY (Asnt_Creacion) REFERENCES Acce.tbUsuarios (Usro_Id),
 		CONSTRAINT FK_tbAsientos_tbUsuarios_Asnt_Modifica FOREIGN KEY (Asnt_Modifica) REFERENCES Acce.tbUsuarios (Usro_Id)
@@ -336,7 +322,7 @@ CREATE TABLE
 		SaTe_Id INT,
 		--auditoria
 		AsSa_Creacion INT NOT NULL,
-		AsSa_FechaCreacion DATE NOT NULL,
+		AsSa_FechaCreacion DATETIME NOT NULL,
 		AsSa_Modifica INT,
 		AsSa_Estado BIT,
 		CONSTRAINT FK_tbAsientosPorSalas_tbAsientos_Asnt_Id FOREIGN KEY (Asnt_Id) REFERENCES Teat.tbAsientos (Asnt_Id),
@@ -349,10 +335,10 @@ GO
 CREATE TABLE
 	Teat.tbVentasEncabezado (
 		Vnts_Id INT IDENTITY (1, 1) PRIMARY KEY,
-		Vnts_Fecha DATETIME,
+		Vnts_Fecha DATETIMETIME,
 		--auditoria
 		Vnts_Creacion INT NOT NULL,
-		Vnts_FechaCreacion DATE NOT NULL,
+		Vnts_FechaCreacion DATETIME NOT NULL,
 		Vnts_Modifica INT,
 		Vnts_Estado BIT,
 		CONSTRAINT FK_tbVentasEncabezado_tbUsuarios_Vnts_Creacion FOREIGN KEY (Vnts_Creacion) REFERENCES Acce.tbUsuarios (Usro_Id),
@@ -364,16 +350,16 @@ CREATE TABLE
 		VtDe_Id INT IDENTITY (1, 1) PRIMARY KEY,
 		VtDe_Boleto VARCHAR(15) UNIQUE,
 		Vnts_Id INT,
-		Asnt_Id INT,
+		Secc_Id INT,
 		Fncs_Id INT,
-		CONSTRAINT FK_tbVentasDetalle_tbVentasEncabezado_Vnts_Id FOREIGN KEY (Vnts_Id) REFERENCES Teat.tbVentasEncabezado (Vnts_Id),
-		CONSTRAINT FK_tbVentasDetalle_tbAsientos_Asnt_Id FOREIGN KEY (Asnt_Id) REFERENCES Teat.tbAsientos (Asnt_Id),
-		CONSTRAINT FK_tbVentasDetalle_tbFunciones_Fncs_Id FOREIGN KEY (Fncs_Id) REFERENCES Teat.tbFunciones (Fncs_Id),
 		--auditoria
 		VtDe_Creacion INT NOT NULL,
-		VtDe_FechaCreacion DATE NOT NULL,
+		VtDe_FechaCreacion DATETIME NOT NULL,
 		VtDe_Modifica INT,
 		VtDe_Estado BIT,
+		CONSTRAINT FK_tbVentasDetalle_tbVentasEncabezado_Vnts_Id FOREIGN KEY (Vnts_Id) REFERENCES Teat.tbVentasEncabezado (Vnts_Id),
+		CONSTRAINT FK_tbVentasDetalle_tbSecciones_Secc_Id FOREIGN KEY (Secc_Id) REFERENCES Teat.tbSecciones (Secc_Id),
+		CONSTRAINT FK_tbVentasDetalle_tbFunciones_Fncs_Id FOREIGN KEY (Fncs_Id) REFERENCES Teat.tbFunciones (Fncs_Id),
 		CONSTRAINT FK_tbVentasDetalle_tbUsuarios_VtDe_Creacion FOREIGN KEY (VtDe_Creacion) REFERENCES Acce.tbUsuarios (Usro_Id),
 		CONSTRAINT FK_tbVentasDetalle_tbUsuarios_VtDe_Modifica FOREIGN KEY (VtDe_Modifica) REFERENCES Acce.tbUsuarios (Usro_Id)
 	)
