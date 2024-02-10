@@ -37,7 +37,7 @@ INSERT INTO
 		Usro_Estado
 	)
 VALUES
-	('Admin', 1, 1, GETDATETIME (), 1);
+	('Admin', 1, 1, GETDATE(), 1);
 
 GO
 -- AGREGAMOS LOS CONSTRAINTS PARA Usro_Creacion, Usro_Modifica
@@ -97,11 +97,11 @@ INSERT INTO
 		EsCi_Estado
 	)
 VALUES
-	('S', 1, GETDATETIME (), 1),
-	('C', 1, GETDATETIME (), 1),
-	('D', 1, GETDATETIME (), 1),
-	('V', 1, GETDATETIME (), 1),
-	('U', 1, GETDATETIME (), 1);
+	('S', 1, GETDATE (), 1),
+	('C', 1, GETDATE (), 1),
+	('D', 1, GETDATE (), 1),
+	('V', 1, GETDATE (), 1),
+	('U', 1, GETDATE (), 1);
 
 GO
 --AGREGAMOS EL PRIMER REGISTRO DE LA PERSONA QUE SERA EL ADMINISTRADOR
@@ -124,7 +124,7 @@ VALUES
 		'2001-06-25',
 		1,
 		1,
-		GETDATETIME (),
+		GETDATE (),
 		1
 	);
 
@@ -220,7 +220,7 @@ GO
 CREATE TABLE
 	Teat.tbFunciones (
 		Fncs_Id INT IDENTITY (1, 1) PRIMARY KEY,
-		Fncs_Fecha DATETIMETIME,
+		Fncs_Fecha DATETIME,
 		Obrs_Id INT,
 		--auditoria
 		Fncs_Creacion INT NOT NULL,
@@ -335,7 +335,7 @@ GO
 CREATE TABLE
 	Teat.tbVentasEncabezado (
 		Vnts_Id INT IDENTITY (1, 1) PRIMARY KEY,
-		Vnts_Fecha DATETIMETIME,
+		Vnts_Fecha DATETIME,
 		--auditoria
 		Vnts_Creacion INT NOT NULL,
 		Vnts_FechaCreacion DATETIME NOT NULL,
@@ -343,12 +343,14 @@ CREATE TABLE
 		Vnts_Estado BIT,
 		CONSTRAINT FK_tbVentasEncabezado_tbUsuarios_Vnts_Creacion FOREIGN KEY (Vnts_Creacion) REFERENCES Acce.tbUsuarios (Usro_Id),
 		CONSTRAINT FK_tbVentasEncabezado_tbUsuarios_Vnts_Modifica FOREIGN KEY (Vnts_Modifica) REFERENCES Acce.tbUsuarios (Usro_Id)
-	) 
+	);
+
 GO
 CREATE TABLE
 	Teat.tbVentasDetalle (
 		VtDe_Id INT IDENTITY (1, 1) PRIMARY KEY,
 		VtDe_Boleto VARCHAR(15) UNIQUE,
+    VtDe_Cantidad INT,
 		Vnts_Id INT,
 		Secc_Id INT,
 		Fncs_Id INT,
@@ -362,4 +364,21 @@ CREATE TABLE
 		CONSTRAINT FK_tbVentasDetalle_tbFunciones_Fncs_Id FOREIGN KEY (Fncs_Id) REFERENCES Teat.tbFunciones (Fncs_Id),
 		CONSTRAINT FK_tbVentasDetalle_tbUsuarios_VtDe_Creacion FOREIGN KEY (VtDe_Creacion) REFERENCES Acce.tbUsuarios (Usro_Id),
 		CONSTRAINT FK_tbVentasDetalle_tbUsuarios_VtDe_Modifica FOREIGN KEY (VtDe_Modifica) REFERENCES Acce.tbUsuarios (Usro_Id)
-	)
+	);
+
+GO
+CREATE TABLE
+  Teat.tbBoletos (
+    Btls_Id INT IDENTITY (1, 1) PRIMARY KEY,
+    VtDe_Id INT,
+    Asnt_Id INT,
+    --auditoria
+    Btls_Creacion INT NOT NULL,
+    Btls_FechaCreacion DATETIME NOT NULL,
+    Btls_Modifica INT,
+    Btls_Estado BIT,
+    CONSTRAINT FK_tbBoletos_tbVentasDetalle_VtDe_Id FOREIGN KEY (VtDe_Id) REFERENCES Teat.tbVentasDetalle (VtDe_Id),
+    CONSTRAINT FK_tbBoletos_tbAsientos_Asnt_Id FOREIGN KEY (Asnt_Id) REFERENCES Teat.tbAsientos (Asnt_Id),
+    CONSTRAINT FK_tbBoletos_tbUsuarios_Btls_Creacion FOREIGN KEY (Btls_Creacion) REFERENCES Acce.tbUsuarios (Usro_Id),
+    CONSTRAINT FK_tbBoletos_tbUsuarios_Btls_Modifica FOREIGN KEY (Btls_Modifica) REFERENCES Acce.tbUsuarios (Usro_Id)
+  );
