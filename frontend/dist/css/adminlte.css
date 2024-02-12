@@ -4343,7 +4343,7 @@ input[type="button"].btn-block {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #fff;
+  background-color: #e2665f;
   border-color: #dee2e6 #dee2e6 #fff;
 }
 
@@ -4353,7 +4353,7 @@ input[type="button"].btn-block {
   border-top-right-radius: 0;
 }
 
-.nav-pills .nav-link {
+.nav-pills . {
   border-radius: 0.25rem;
 }
 
@@ -12862,7 +12862,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 }
 
 [class*="sidebar-dark-"] {
-  background-color: #343a40;
+  background-color: #2f2f2f;
 }
 
 [class*="sidebar-dark-"] .user-panel a:hover {
@@ -12932,7 +12932,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 
 [class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link.active, [class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link.active:hover, [class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link.active:focus {
   background-color: rgba(255, 255, 255, 0.9);
-  color: #343a40;
+  color: #e2665f;
 }
 
 [class*="sidebar-dark-"] .nav-flat .nav-item .nav-treeview .nav-treeview {
@@ -12945,7 +12945,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 
 .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active,
 .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
-  background-color: #007bff;
+  background-color: #e2665f;
   color: #fff;
 }
 
