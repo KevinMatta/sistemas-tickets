@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Obras" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Obras_Index.aspx.cs" Inherits="FM_Tickets_WebForm.Formulario_web110" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <div class="container">
         <div class="card">
             <div class="card-header">
@@ -62,7 +63,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <button id="btnEliminar"  value="Eliminar" class="btn btn-danger" onclick="Eliminar('<%# Eval("ID") %>');" >Eliminar</button>
+                                <button id="btnEliminar"  value="Eliminar" class="btn btn-danger" >Eliminar</button>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -77,7 +78,33 @@
             if ($("[id$=CollapseObras]").val() == "true") {
                 $("#collapseExample").removeClass("collapse");
             }
+
+
+            //$("body").on("click", ".btnEliminar", function () {
+            //    var obraId = $(this).closest("td").text();
+
+            //    $("#confirmacionModal").modal("show");
+
+            //    $("#btnConfirmarEliminar").off().on("click", function () {
+            //        __doPostBack("Eliminar", obraId);
+
+            //        $("#confirmacionModal").modal("hide");
+            //    });
+            //});
+
+
         });
+        //function Eliminar(obraId) {
+        //    //alert('Hola');
+        //    var obraId = $(this).closest("td").text();
+
+        //    $("#confirmacionModal").modal("show");
+
+        //    $("#btnConfirmarEliminar").off().on("click", function () {
+        //        __doPostBack("Eliminar", obraId);
+
+        //        $("#confirmacionModal").modal("hide");
+        //    }
 
 
     </script>
