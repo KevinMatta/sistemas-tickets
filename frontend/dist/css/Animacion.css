@@ -1,0 +1,16 @@
+
+#logo-bienvenido {
+    animation-name: movimiento-lateral;
+    animation-duration: 5s;
+    animation-iteration-count: 10;
+ }
+
+
+@keyframes movimiento-lateral {
+   from {
+      left: 0px;
+   }
+   to {
+      left: 100px;
+   }
+}
