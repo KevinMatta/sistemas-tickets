@@ -29,7 +29,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             DataSet ds = ObtenerDs(sql, "T");
             ddl.DataValueField = ds.Tables["T"].Columns[0].ColumnName;
-            ddl.DataTextField  = ds.Tables["T"].Columns[1].ColumnName;
+            ddl.DataTextField = ds.Tables["T"].Columns[1].ColumnName;
             ddl.DataSource = ds.Tables["T"];
             ddl.DataBind();
             ddl.Items.Insert(0, new ListItem("Seleccione una opcion", "0"));
@@ -43,5 +43,6 @@ namespace FM_Tickets_WebForm.Clases
             cmd.ExecuteNonQuery();
             con.Close();
         }
+
     }
 }

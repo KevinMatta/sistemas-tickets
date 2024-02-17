@@ -1,25 +1,29 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Academia de programacion\\test\\sistemas-tickes\\Backend\\",
+  "WorkspaceRootPath": "C:\\Users\\kevin\\Documents\\Genesis\\proyecto\\Backend\\FM_Tickets_WebForm\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8251AB16-2229-4E2F-85A8-843660FFCB60}|FM_Tickets_WebForm.csproj|d:\\academia de programacion\\test\\sistemas-tickes\\backend\\estados_index.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8251AB16-2229-4E2F-85A8-843660FFCB60}|FM_Tickets_WebForm.csproj|c:\\users\\kevin\\documents\\genesis\\proyecto\\backend\\fm_tickets_webform\\personas_index.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8251AB16-2229-4E2F-85A8-843660FFCB60}|FM_Tickets_WebForm.csproj|solutionrelative:personas_index.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8251AB16-2229-4E2F-85A8-843660FFCB60}|FM_Tickets_WebForm.csproj|c:\\users\\kevin\\documents\\genesis\\proyecto\\backend\\fm_tickets_webform\\estados_index.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8251AB16-2229-4E2F-85A8-843660FFCB60}|FM_Tickets_WebForm.csproj|solutionrelative:estados_index.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8251AB16-2229-4E2F-85A8-843660FFCB60}|FM_Tickets_WebForm.csproj|D:\\Academia de programacion\\test\\sistemas-tickes\\Backend\\obras_index.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8251AB16-2229-4E2F-85A8-843660FFCB60}|FM_Tickets_WebForm.csproj|C:\\Users\\kevin\\Documents\\Genesis\\proyecto\\Backend\\FM_Tickets_WebForm\\obras_index.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8251AB16-2229-4E2F-85A8-843660FFCB60}|FM_Tickets_WebForm.csproj|solutionrelative:obras_index.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8251AB16-2229-4E2F-85A8-843660FFCB60}|FM_Tickets_WebForm.csproj|D:\\Academia de programacion\\test\\sistemas-tickes\\Backend\\funciones_index.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8251AB16-2229-4E2F-85A8-843660FFCB60}|FM_Tickets_WebForm.csproj|C:\\Users\\kevin\\Documents\\Genesis\\proyecto\\Backend\\FM_Tickets_WebForm\\funciones_index.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8251AB16-2229-4E2F-85A8-843660FFCB60}|FM_Tickets_WebForm.csproj|solutionrelative:funciones_index.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8251AB16-2229-4E2F-85A8-843660FFCB60}|FM_Tickets_WebForm.csproj|D:\\Academia de programacion\\test\\sistemas-tickes\\Backend\\teatros_index.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8251AB16-2229-4E2F-85A8-843660FFCB60}|FM_Tickets_WebForm.csproj|C:\\Users\\kevin\\Documents\\Genesis\\proyecto\\Backend\\FM_Tickets_WebForm\\teatros_index.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8251AB16-2229-4E2F-85A8-843660FFCB60}|FM_Tickets_WebForm.csproj|solutionrelative:teatros_index.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8251AB16-2229-4E2F-85A8-843660FFCB60}|FM_Tickets_WebForm.csproj|D:\\Academia de programacion\\test\\sistemas-tickes\\Backend\\teatros_index.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{8251AB16-2229-4E2F-85A8-843660FFCB60}|FM_Tickets_WebForm.csproj|C:\\Users\\kevin\\Documents\\Genesis\\proyecto\\Backend\\FM_Tickets_WebForm\\teatros_index.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{8251AB16-2229-4E2F-85A8-843660FFCB60}|FM_Tickets_WebForm.csproj|solutionrelative:teatros_index.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
@@ -35,23 +39,36 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Personas_Index.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\kevin\\Documents\\Genesis\\proyecto\\Backend\\FM_Tickets_WebForm\\Personas_Index.aspx.cs",
+              "RelativeDocumentMoniker": "Personas_Index.aspx.cs",
+              "ToolTip": "C:\\Users\\kevin\\Documents\\Genesis\\proyecto\\Backend\\FM_Tickets_WebForm\\Personas_Index.aspx.cs",
+              "RelativeToolTip": "Personas_Index.aspx.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-17T05:00:20.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Estados_Index.aspx.cs",
-              "DocumentMoniker": "D:\\Academia de programacion\\test\\sistemas-tickes\\Backend\\Estados_Index.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\kevin\\Documents\\Genesis\\proyecto\\Backend\\FM_Tickets_WebForm\\Estados_Index.aspx.cs",
               "RelativeDocumentMoniker": "Estados_Index.aspx.cs",
-              "ToolTip": "D:\\Academia de programacion\\test\\sistemas-tickes\\Backend\\Estados_Index.aspx.cs",
+              "ToolTip": "C:\\Users\\kevin\\Documents\\Genesis\\proyecto\\Backend\\FM_Tickets_WebForm\\Estados_Index.aspx.cs",
               "RelativeToolTip": "Estados_Index.aspx.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEUAAAAuAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAAEUAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-16T09:46:52.294Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Obras_Index.aspx.cs",
-              "DocumentMoniker": "D:\\Academia de programacion\\test\\sistemas-tickes\\Backend\\Obras_Index.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\kevin\\Documents\\Genesis\\proyecto\\Backend\\FM_Tickets_WebForm\\Obras_Index.aspx.cs",
               "RelativeDocumentMoniker": "Obras_Index.aspx.cs",
-              "ToolTip": "D:\\Academia de programacion\\test\\sistemas-tickes\\Backend\\Obras_Index.aspx.cs",
+              "ToolTip": "C:\\Users\\kevin\\Documents\\Genesis\\proyecto\\Backend\\FM_Tickets_WebForm\\Obras_Index.aspx.cs",
               "RelativeToolTip": "Obras_Index.aspx.cs",
               "ViewState": "AQIAADUAAAAAAAAAAAAAAEYAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -59,11 +76,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Funciones_Index.aspx.cs",
-              "DocumentMoniker": "D:\\Academia de programacion\\test\\sistemas-tickes\\Backend\\Funciones_Index.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\kevin\\Documents\\Genesis\\proyecto\\Backend\\FM_Tickets_WebForm\\Funciones_Index.aspx.cs",
               "RelativeDocumentMoniker": "Funciones_Index.aspx.cs",
-              "ToolTip": "D:\\Academia de programacion\\test\\sistemas-tickes\\Backend\\Funciones_Index.aspx.cs",
+              "ToolTip": "C:\\Users\\kevin\\Documents\\Genesis\\proyecto\\Backend\\FM_Tickets_WebForm\\Funciones_Index.aspx.cs",
               "RelativeToolTip": "Funciones_Index.aspx.cs",
               "ViewState": "AQIAADcAAAAAAAAAAAAAAEkAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -71,11 +88,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Teatros_Index.aspx",
-              "DocumentMoniker": "D:\\Academia de programacion\\test\\sistemas-tickes\\Backend\\Teatros_Index.aspx",
+              "DocumentMoniker": "C:\\Users\\kevin\\Documents\\Genesis\\proyecto\\Backend\\FM_Tickets_WebForm\\Teatros_Index.aspx",
               "RelativeDocumentMoniker": "Teatros_Index.aspx",
-              "ToolTip": "D:\\Academia de programacion\\test\\sistemas-tickes\\Backend\\Teatros_Index.aspx",
+              "ToolTip": "C:\\Users\\kevin\\Documents\\Genesis\\proyecto\\Backend\\FM_Tickets_WebForm\\Teatros_Index.aspx",
               "RelativeToolTip": "Teatros_Index.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
@@ -83,11 +100,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Teatros_Index.aspx.cs",
-              "DocumentMoniker": "D:\\Academia de programacion\\test\\sistemas-tickes\\Backend\\Teatros_Index.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\kevin\\Documents\\Genesis\\proyecto\\Backend\\FM_Tickets_WebForm\\Teatros_Index.aspx.cs",
               "RelativeDocumentMoniker": "Teatros_Index.aspx.cs",
-              "ToolTip": "D:\\Academia de programacion\\test\\sistemas-tickes\\Backend\\Teatros_Index.aspx.cs",
+              "ToolTip": "C:\\Users\\kevin\\Documents\\Genesis\\proyecto\\Backend\\FM_Tickets_WebForm\\Teatros_Index.aspx.cs",
               "RelativeToolTip": "Teatros_Index.aspx.cs",
               "ViewState": "AQIAADcAAAAAAAAAAAAAAEkAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

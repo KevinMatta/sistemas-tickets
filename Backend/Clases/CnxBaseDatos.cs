@@ -12,9 +12,7 @@ namespace FM_Tickets_WebForm.Clases
 
 		public SqlConnection ObtenerCnx()
         {
-			//laptop Laptop-Kevin\SQLEXPRESS
-			//lab    DESKTOP-6C3UF0A\SQLEXPRESS
-			con = @"data source = DESKTOP-6C3UF0A\SQLEXPRESS; initial catalog = DB_Tickets; user id = ADMIN123; password = Admin123;";
+			con = @"data source = DESKTOP-FSOEUAA\SQLEXPRESS; initial catalog = DB_Tickets; user id = ADMIN123; password = Admin123;";
 			cnx.ConnectionString = con;
 			return cnx;
         }

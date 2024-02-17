@@ -62,7 +62,7 @@
     cursor: pointer;
 }
 
-.btnRegister:hover{
+.btnRegister:hover {
     float: right;
     margin-top: 10%;
     border: none;

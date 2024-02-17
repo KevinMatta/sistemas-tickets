@@ -283,27 +283,6 @@
                    <div class="container body-content">
                   <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                   </asp:ContentPlaceHolder>
-
-                       <!-- The Modal -->
-                       <div class="modal" id="myModal">
-                           <div class="modal-dialog">
-                               <div class="modal-content">
-
-                                   <!-- Modal Header -->
-                                   <div class="modal-header">
-                                       <h4 class="modal-title">Seguro quiere Eliminar Registro?</h4>
-                                       <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                   </div>
-
-                                   <!-- Modal footer -->
-                                   <div class="modal-footer">
-                                       <button id="btnAceptarEliminar" type="button" class="btn btn-danger" data-dismiss="modal">Eliminar</button>
-                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                   </div>
-
-                               </div>
-                           </div>
-                       </div>
                   </div>
                     </form>         
                  </div>
@@ -362,17 +341,13 @@
         function Editar(id) {
             __doPostBack("Editar", id);
         }
-        function Eliminar(id) {
-            //$("#myModal").modal("show");
 
-            let respuesta = confirm("Desea eliminar el registro?");
+        function Eliminar(id) {
+            var respuesta = confirm("Desea eliminar ese registro?");
             if (respuesta) {
                 __doPostBack("Eliminar", id);
             }
         }
-
-        
     </script>
-
 </body>
 </html>

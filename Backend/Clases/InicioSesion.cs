@@ -14,7 +14,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             string resul = "";
             DataSet ds = new DataSet();
-            ds = utilitarios.ObtenerDs($"EXEC [Acce].[spObtenerNombreUsuario]'{usuario}','{contra}'", "T");
+            ds = utilitarios.ObtenerDs($"EXEC  Acce.spObtenerNombreUsuario'{usuario}','{contra}'", "T");
             if (ds.Tables["T"].Rows.Count > 0)
             {
                 resul = ds.Tables["T"].Rows[0]["NOMBRE"].ToString();

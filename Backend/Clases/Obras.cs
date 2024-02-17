@@ -47,14 +47,5 @@ namespace FM_Tickets_WebForm.Clases
             util.EjecutarSP(cmd);
         }
 
-        public void Eliminar(int id)
-        {
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Teat.sp_EliminarObra";
-            cmd.Parameters.Add(new SqlParameter("Obrs_Id", id));
-            util.EjecutarSP(cmd);
-        }
-
     }
 }
