@@ -35,23 +35,16 @@ namespace FM_Tickets_WebForm
                 }
                 if (target == "Eliminar")
                 {
-                    
+                    ShowModalElim.Value = "true";
                     int id = int.Parse(argument);
-                    try
-                    {
-                        Obras.Eliminar(id);
-                        Obras.CargarGrid(gvObras);
-                    }
-                    catch
-                    {
-                        //iziToast
-                        //Response.Write("<script language=javascript>iziToast.Error({title: 'Error', message: 'Hay otras tablas que depende de este campo',});</script>");
-                        Response.Write("<script language=javascript>alert('Existen campos dependientes de esta obra');</script>");
+                    Session["ID"] = id;
 
-                    }
                 }
 
             }
+
+
+
         }
 
         protected void gvObras_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -77,6 +70,22 @@ namespace FM_Tickets_WebForm
             Session["Obrs_Id"] = "";
             Session["accion"] = "";
             CollapseObras.Value = "false";
+        }
+
+        protected void btnConfirmarEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Obras.Eliminar(int.Parse(Session["ID"].ToString()));
+                Obras.CargarGrid(gvObras);
+            }
+            catch
+            {
+                //iziToast
+                //Response.Write("<script language=javascript>iziToast.Error({title: 'Error', message: 'Hay otras tablas que depende de este campo',});</script>");
+                Response.Write("<script language=javascript>alert('Existen campos dependientes de esta obra');</script>");
+
+            }
         }
     }
 }

@@ -2,6 +2,32 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+
+
+            <%--modal de confirmar eliminar--%>
+<asp:HiddenField ID="ShowModalElim" runat="server" />
+<div class="modal fade" id="confirmacionModal" tabindex="-1" role="dialog" aria-labelledby="confirmacionModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Confirmación de Eliminación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Está seguro de que desea eliminar esta obra?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <asp:Button type="button" class="btn btn-danger" id="btnConfirmarEliminar" OnClick="btnConfirmarEliminar_Click">Eliminar</asp:Button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
     <div class="container">
         <div class="card">
             <div class="card-header">
@@ -63,7 +89,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <button id="btnEliminar"  value="Eliminar" class="btn btn-danger" >Eliminar</button>
+                                <button id="btnEliminar"  value="Eliminar" class="btn btn-danger" onclick="Eliminar('<%# Eval("ID") %>');">Eliminar</button>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -71,14 +97,29 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
     <script src="Content/plugins/iziToast-master/dist/js/iziToast.js"></script>
     <script src="Content/plugins/jquery/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
+
             if ($("[id$=CollapseObras]").val() == "true") {
                 $("#collapseExample").removeClass("collapse");
-            }
 
+            }
+            if ($('[id$=ShowModalElim]').val() == 'true') {
+                $('#confirmacionModal').modal('show');
+            }
+            alert($('[id$=ShowModalElim]').val())
+
+        });
 
             //$("body").on("click", ".btnEliminar", function () {
             //    var obraId = $(this).closest("td").text();
@@ -93,7 +134,6 @@
             //});
 
 
-        });
         //function Eliminar(obraId) {
         //    //alert('Hola');
         //    var obraId = $(this).closest("td").text();
