@@ -44,5 +44,18 @@ namespace FM_Tickets_WebForm.Clases
             con.Close();
         }
 
+
+        public int ObtenerUltimoId(SqlConnection cnx)
+        {
+            int ultimoId = -1;
+
+            using (SqlCommand cmd2 = new SqlCommand("SELECT SCOPE_IDENTITY() AS UltimoId", cnx))
+            {
+                ultimoId = (int)cmd2.ExecuteScalar();
+            }
+
+            return ultimoId;
+        }
+
     }
 }

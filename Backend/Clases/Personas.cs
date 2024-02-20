@@ -17,7 +17,7 @@ namespace FM_Tickets_WebForm.Clases
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
-        public void Insert(string nombre, string apellido, string sexo, string fecha, int creacion, int est)
+        public int Insert(string nombre, string apellido, string sexo, string fecha, int creacion, int est)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
@@ -30,16 +30,20 @@ namespace FM_Tickets_WebForm.Clases
             cmd.Parameters.Add(new SqlParameter("@EsCi_Id", est));
             cmd.Parameters.Add(new SqlParameter("@Prsn_FechaCreacion", DateTime.Now));
             util.EjecutarSP(cmd);
+
+            int personaID = Convert.ToInt32(cmd.ExecuteScalar());
+
+            return personaID;
         }
 
         public void CargarDDL(DropDownList ddl)
         {
-            util.CargarDDL(ddl, "SELECT EsCi_Id, EsCi_Descripcion FROM Gene.tbEstadosCiviles WHERE EsCi_Estado = 1 ORDER BY EsCi_Descripcion ");
+            util.CargarDDL(ddl, "Gene.sp_MostrarPersonas");
         }
 
         public void Llenar(int id, out string nombre, out string apellido, out string sexo, out string fecha, out int estado)
         {
-            DataSet ds = util.ObtenerDs("SELECT*FROM gene.tbPersonas WHERE [Prsn_Id] = " + id, "T");
+            DataSet ds = util.ObtenerDs($"Gene.sp_BuscarPersona '{id}'", "T");
             nombre = ds.Tables["T"].Rows[0]["Prsn_Nombre"].ToString();
             apellido = ds.Tables["T"].Rows[0]["Prsn_Apellido"].ToString();
             sexo = ds.Tables["T"].Rows[0]["Prsn_Sexo"].ToString();
