@@ -14,13 +14,10 @@ namespace FM_Tickets_WebForm
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ciudades.CargarGrid(gvCiudades);
             if (!IsPostBack)
             {
-                Session["Cont"] = 0;
                 ciudades.CargarGrid(gvCiudades);
                 ciudades.CargarDDL(DDLDepto);
-                HFCiudades.Value = "false";
             }
             else
             {
@@ -28,23 +25,22 @@ namespace FM_Tickets_WebForm
                 string argument = Request["__EVENTARGUMENT"];
                 if (target == "Editar")
                 {
-                    Session["id"] = int.Parse(argument);
+                    Session["accion"] = "editar";
                     int id = int.Parse(argument);
+                    Session["ID"] = id;
                     string descripcion;
-                    string funcion;
-                    ciudades.Llenar(id, out descripcion, out funcion);
-                    HFCiudades.Value = "true";
+                    string idEstado;
+                    ciudades.Llenar(id, out descripcion, out idEstado);
                     txtNombreCiudad.Value = descripcion;
-                    DDLDepto.SelectedValue = funcion.ToString();
-                    HFCiudades.Value = "true";
-                    Session["Cont"] = 1;
+                    DDLDepto.SelectedValue = idEstado;
+                    CollapseCiudades.Value = "true";
                 }
                 if (target == "Eliminar")
                 {
                     try
                     {
-                        Session["id"] = int.Parse(argument);
-                        int id = int.Parse(Session["id"].ToString());
+                        Session["ID"] = int.Parse(argument);
+                        int id = int.Parse(Session["ID"].ToString());
                         ciudades.Eliminar(id);
                         ciudades.CargarGrid(gvCiudades);
                     }
@@ -70,16 +66,25 @@ namespace FM_Tickets_WebForm
         }
 
         protected void btnGuardar_ServerClick(object sender, EventArgs e)
-        { 
-            int usr = int.Parse(Session["Usro_Id"].ToString());
-            string estado = DDLDepto.SelectedValue;
-            ciudades.Insert(txtNombreCiudad.Value,estado,usr);
-            ciudades.CargarGrid(gvCiudades);
-        }
-
-        protected void btnGuardar_ServerClick1(object sender, EventArgs e)
         {
-
+            if(Session["accion"].ToString() == "editar")
+            {
+                ciudades.actualizar(int.Parse(Session["ID"].ToString()), txtNombreCiudad.Value, DDLDepto.SelectedValue, int.Parse(Session["Usro_Id"].ToString()));
+                ciudades.CargarGrid(gvCiudades);
+                ciudades.CargarDDL(DDLDepto);
+            }
+            else
+            {
+                ciudades.Insert(txtNombreCiudad.Value, DDLDepto.SelectedValue, int.Parse(Session["Usro_Id"].ToString()));
+                ciudades.CargarGrid(gvCiudades);
+                ciudades.CargarDDL(DDLDepto);
+            }
+            Session["ID"] = "";
+            Session["accion"] = "";
+            CollapseCiudades.Value = "false";
+            txtNombreCiudad.Value = "";
+            DDLDepto.SelectedValue = "0";
         }
+
     }
 }

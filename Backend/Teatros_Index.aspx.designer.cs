@@ -33,6 +33,15 @@ namespace FM_Tickets_WebForm
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtTeatro;
 
         /// <summary>
+        /// ddlEstados control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEstados;
+
+        /// <summary>
         /// ddlCiudades control.
         /// </summary>
         /// <remarks>

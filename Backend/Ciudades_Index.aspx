@@ -11,7 +11,7 @@
                     </button>
                 </p>
             </div>
-            <asp:HiddenField ID="HFCiudades" runat="server" />
+            <asp:HiddenField ID="CollapseCiudades" runat="server" />
             <div class="collapse" id="collapseExample">
                 <div class="card card-body">
                     <div class="container">
@@ -32,7 +32,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <asp:DropDownList ID="DDLDepto" runat="server" CssClass="form-control"></asp:DropDownList>
+                                                        <asp:DropDownList ID="DDLDepto" runat="server" CssClass="form-control" DataTextField="Estd_Descripcion" DataValueField="ID"></asp:DropDownList>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-5">
@@ -62,8 +62,8 @@
                 <asp:GridView ID="gvCiudades" runat="server" AutoGenerateColumns="false" CssClass="table  table-striped table-border" AllowPaging="true" OnPageIndexChanging="gvCiudades_PageIndexChanging">
                     <Columns>
                         <asp:BoundField HeaderText="ID" DataField="ID" />
-                        <asp:BoundField HeaderText="CIUDAD" DataField="CIUDAD" />
-                        <asp:BoundField HeaderText="ESTADO_ID" DataField="ESTADO_ID" />
+                        <asp:BoundField HeaderText="CIUDAD" DataField="Ciud_Descripcion" />
+                        <asp:BoundField HeaderText="ESTADO" DataField="Estd_Descripcion" />
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <button id="btnEditar" text="Editar" class="btn btn-success" value="Editar" onclick="Editar('<%#Eval("ID") %>');">Editar</button>
@@ -82,7 +82,7 @@
     <script src="Content/plugins/jquery/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-            if ($("[id$=HFCiudades]").val() == "true") {
+            if ($("[id$=CollapseCiudades]").val() == "true") {
                 $("#collapseExample").removeClass("collapse");
             }
         });

@@ -28,22 +28,26 @@
                           <div class="form-group">
                               <input runat="server" type="text" class="form-control" placeholder="Teatro (Nombre)" value="" id="txtTeatro" />
                           </div>
-  
                       </div>
                       <div class="col-md-6">
                           <div class="form-group">
-                              <asp:DropDownList ID="ddlCiudades" runat="server" CssClass="form-control" DataTextField="Descripcion" DataValueField="ID"></asp:DropDownList>
+                              <asp:DropDownList ID="ddlEstados" runat="server" CssClass="form-control" DataTextField="Estd_Descripcion" DataValueField="ID"></asp:DropDownList>
                           </div>
-                          </div>
-                           <button runat="server" id="btnGuardar" onserverclick="btnGuardar_ServerClick" class="btnRegister" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                               Guardar
-                           </button>                          
                       </div>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <asp:DropDownList ID="ddlCiudades" runat="server" CssClass="form-control" DataTextField="Ciud_Descripcion" DataValueField="ID"></asp:DropDownList>
+                          </div>
+                      </div>
+                      <button runat="server" id="btnGuardar" onserverclick="btnGuardar_ServerClick" class="btnRegister" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                          Guardar
+                      </button>
+                  </div>
               </div>
-         </div>
-       </div>
+          </div>
       </div>
-   </div>
+  </div>
+                  </div>
   
                   </div>
               </div>
@@ -56,8 +60,9 @@
                    <asp:GridView ID="gvTeatros" runat="server" AutoGenerateColumns="false" CssClass="table  table-striped table-border" AllowPaging ="true" OnPageIndexChanging="gvTeatros_PageIndexChanging">
     <Columns>
         <asp:BoundField  HeaderText =" ID" DataField="ID" />
-        <asp:BoundField  HeaderText ="NOMBRE" DataField="NOMBRE" />
-         <asp:BoundField  HeaderText ="CIUDAD_ID" DataField="CIUDAD_ID" />
+        <asp:BoundField  HeaderText ="TEATRO" DataField="Teat_Descripcion" />
+         <asp:BoundField  HeaderText ="CIUDAD" DataField="Ciud_Descripcion" />
+        <asp:BoundField  HeaderText ="ESTADO" DataField="Estd_Descripcion " />
         <asp:TemplateField>
             <ItemTemplate>
                  <button id="btnEditar" class="btn btn-success" onclick="Editar('<%# Eval("ID") %>');">Editar</button>

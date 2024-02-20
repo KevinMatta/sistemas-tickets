@@ -11,7 +11,7 @@ namespace FM_Tickets_WebForm
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Usuario"] == "" || Session["Usuario"] == null)
+            if (Session["Usuario"].ToString() == "" || Session["Usuario"] == null)
             {
                 Response.Redirect("Index.aspx");
             }

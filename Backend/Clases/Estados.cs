@@ -13,7 +13,7 @@ namespace FM_Tickets_WebForm.Clases
         Utilitarios util = new Utilitarios();
         public void CargarGrid(GridView gv)
         {
-            DataSet ds = util.ObtenerDs("SELECT Estd_Id AS ID , Estd_Descripcion AS NOMBRE FROM Gene.tbEstados", "T");
+            DataSet ds = util.ObtenerDs("sp_MostrarEstados", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
@@ -30,14 +30,9 @@ namespace FM_Tickets_WebForm.Clases
             util.EjecutarSP(cmd);
         }
 
-        public void CargarDDL(DropDownList ddl)
-        {
-            util.CargarDDL(ddl, "SELECT Esta_Id AS ID, Esta_Descripcion AS Descripcion FROM Gene.tbEstados WHERE Esta_Estado =1 ORDER BY Esta_Descripcion ");
-        }
-
         public void Llenar(string id, out string estado)
         {
-            DataSet ds = util.ObtenerDs("SELECT * FROM Gene.tbEstados WHERE Estd_Id=" + id, "T");
+            DataSet ds = util.ObtenerDs($"DB_Tickets.Gene.sp_BuscarEstado {id}", "T");
             estado = ds.Tables["T"].Rows[0]["Estd_Descripcion"].ToString();
         }
          

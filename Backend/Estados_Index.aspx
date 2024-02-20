@@ -55,7 +55,7 @@
                <asp:GridView ID="gvEstados" runat="server" AutoGenerateColumns="false" CssClass="table  table-striped table-border" AllowPaging="true" OnPageIndexChanging="gvEstados_PageIndexChanging">
                    <Columns>
                        <asp:BoundField HeaderText=" ID" DataField="ID" />
-                       <asp:BoundField HeaderText="NOMBRE" DataField="NOMBRE" />
+                       <asp:BoundField HeaderText="ESTADO" DataField="Estd_Descripcion" />
                        <asp:TemplateField>
                            <ItemTemplate>
                                <button id="btnEditar" class="btn btn-success" onclick="Editar('<%# Eval("ID") %>');">Editar</button>

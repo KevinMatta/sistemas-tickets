@@ -10,6 +10,7 @@
                </button>
            </p>
           </div>
+          <asp:HiddenField ID="CollapseUsuarios" runat="server" />
           <div class="collapse" id="collapseExample">
          <div class="card card-body">
               <div class="container">
@@ -25,21 +26,18 @@
                   <div class="row register-form">
                       <div class="col-md-6">
                           <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Rol " value="" id="txtRol_Usr" />
-                          </div>
-                          <div class="form-group">
-                          <input type="text" class="form-control" placeholder="Usuario" value="" id="txtUsuario"/>
+                          <input  runat="server" type="text" class="form-control" placeholder="Usuario" value="" id="txtUsuario"/>
                            </div>
                       </div>
                       <div class="col-md-6">
                           <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Clave" value="" id="txtClave"/>
+                              <input runat="server" type="text" class="form-control" placeholder="Clave" value="" id="txtClave"/>
                           </div>
                           <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Persona (ID)" value="" id="txtPersonaID_Usr"/>
-                           </div>
+                              <asp:DropDownList ID="ddlEmpleados" runat="server" CssClass="form-control" DataTextField="NOMBRE" DataValueField="ID"></asp:DropDownList>
                           </div>
-                           <button class="btnRegister" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                      </div>
+                           <button id="btnGuardar" onserverclick="btnGuardar_ServerClick" runat="server"  class="btnRegister"  type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                Guardar
                            </button>                          
                       </div>
@@ -60,18 +58,18 @@
        <asp:GridView ID="gvUsuarios" runat="server" AutoGenerateColumns="false" CssClass="table  table-striped table-border" AllowPaging ="true" OnPageIndexChanging="gvUsuarios_PageIndexChanging">
     <Columns>
         <asp:BoundField  HeaderText ="ID Usuario" DataField="ID" />
-        <asp:BoundField  HeaderText ="Rol" DataField="ROL" />
-         <asp:BoundField  HeaderText ="CLAVE" DataField="CLAVE" />
-        <asp:BoundField  HeaderText ="PERSONA_ID" DataField="PERSONA_ID" />
+         <asp:BoundField  HeaderText ="NOMBRE" DataField="NOMBRE" />
+        <asp:BoundField  HeaderText ="USUARIO" DataField="USUARIO" />
+        <asp:BoundField  HeaderText ="CLAVE" DataField="CLAVE" />
 
         <asp:TemplateField>
             <ItemTemplate>
-                 <asp:Button ID="btnEditar" runat="server" Text="Editar" CssClass="btn btn-success" />
+                 <button id="btnEditar" class="btn btn-success" onclick="Editar('<%# Eval("ID") %>');">Editar</button>
             </ItemTemplate>
         </asp:TemplateField>
         <asp:TemplateField>
             <ItemTemplate>
-                 <asp:Button ID="btnEditar" runat="server" Text="Eliminar" CssClass="btn btn-danger" />
+                 <button id="btnEditar" class="btn btn-danger" onclick="Eliminar('<%# Eval("ID") %>');">Eliminar</button>
             </ItemTemplate>
         </asp:TemplateField>
     </Columns>
@@ -79,4 +77,12 @@
            </div>
        </div>
     </div>
+    <script src="Content/plugins/jquery/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($("[id$=CollapseUsuarios]").val() == "true") {
+                $("#collapseExample").removeClass("collapse");
+            }
+        });
+    </script>
 </asp:Content>

@@ -67,9 +67,9 @@ namespace FM_Tickets_WebForm
 
         protected void btnGuardar_ServerClick(object sender, EventArgs e)
         {
-            if (Session["accion"] == "editar")
+            if (Session["accion"].ToString() == "editar")
             {
-                estados.Actualizar(Session["Estd_Id"].ToString(), txtEstado.Value, int.Parse(Session["Usro_Id"].ToString()));
+                estados.Actualizar(Session["ID"].ToString(), txtEstado.Value, int.Parse(Session["Usro_Id"].ToString()));
                 estados.CargarGrid(gvEstados);
             }
             else
@@ -77,7 +77,7 @@ namespace FM_Tickets_WebForm
                 estados.Insert(txtEstadoID.Value, txtEstado.Value, int.Parse(Session["Usro_Id"].ToString()));
                 estados.CargarGrid(gvEstados);
             }
-            Session["Obrs_Id"] = "";
+            Session["ID"] = "";
             Session["accion"] = "";
             CollapseEstado.Value = "false";
         }

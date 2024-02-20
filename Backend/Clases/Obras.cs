@@ -13,7 +13,7 @@ namespace FM_Tickets_WebForm.Clases
         Utilitarios util = new Utilitarios();
         public void CargarGrid(GridView gv)
         {
-            DataSet ds = util.ObtenerDs("SELECT Obrs_Id AS ID , Obrs_Descripcion AS NOMBRE FROM [Teat].[tbObras]", "T");
+            DataSet ds = util.ObtenerDs("Teat.sp_MostrarObras", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
@@ -30,7 +30,7 @@ namespace FM_Tickets_WebForm.Clases
         }
         public void Llenar(int id, out string nombre)
         {
-            DataSet ds = util.ObtenerDs("SELECT * FROM Teat.tbObras WHERE Obrs_Id=" + id, "T");
+            DataSet ds = util.ObtenerDs($"Teat.sp_BuscarObra '{id}'", "T");
             nombre = ds.Tables["T"].Rows[0]["Obrs_Descripcion"].ToString();
         }
 

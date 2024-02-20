@@ -10,6 +10,7 @@
                </button>
            </p>
           </div>
+          <asp:HiddenField ID="CollapseEstadosCiviles" runat="server" />
           <div class="collapse" id="collapseExample">
          <div class="card card-body">
               <div class="container">
@@ -25,7 +26,7 @@
                   <div class="row register-form">
                       <div class="col-md-6">
                           <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Estado Civil (Nombre)" value="" id="txtEstadoCivilNombre" />
+                              <input runat="server" type="text" class="form-control" placeholder="Estado Civil (Nombre)" value="" id="txtDescripcion" />
                           </div>
                           
                       </div>
@@ -53,15 +54,15 @@
                    <asp:GridView ID="gvEstadosCiviles" runat="server" AutoGenerateColumns="false" CssClass="table  table-striped table-border" AllowPaging ="true" OnPageIndexChanging="gvEstadosCiviles_PageIndexChanging">
     <Columns>
         <asp:BoundField  HeaderText =" ID" DataField="ID" />
-        <asp:BoundField  HeaderText ="NOMBRE" DataField="NOMBRE" />
+        <asp:BoundField  HeaderText ="DESCRIPCION" DataField="EsCi_Descripcion" />
         <asp:TemplateField>
             <ItemTemplate>
-                 <asp:Button ID="btnEditar" runat="server" Text="Editar" CssClass="btn btn-success" />
+                 <button ID="btnEditar" class="btn btn-success" onclick="Editar('<%# Eval("ID") %>')">Editar</button>
             </ItemTemplate>
         </asp:TemplateField>
         <asp:TemplateField>
             <ItemTemplate>
-                 <asp:Button ID="btnEditar" runat="server" Text="Eliminar" CssClass="btn btn-danger" />
+                 <button ID="btnEliminar" class="btn btn-danger" onclick="Eliminar('<%# Eval("ID") %>')">Eliminar</button>
             </ItemTemplate>
         </asp:TemplateField>
     </Columns>
@@ -69,4 +70,12 @@
            </div>
        </div>
     </div>
+        <script src="Content/plugins/jquery/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($("[id$=CollapseEstadosCiviles]").val() == "true") {
+                $("#collapseExample").removeClass("collapse");
+            }
+        });
+    </script>
 </asp:Content>

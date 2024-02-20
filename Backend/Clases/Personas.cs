@@ -13,7 +13,7 @@ namespace FM_Tickets_WebForm.Clases
         Utilitarios util = new Utilitarios();
         public void CargarGrid(GridView gv)
         {
-            DataSet ds = util.ObtenerDs("SELECT Prsn_Id AS ID , Prsn_Nombre AS NOMBRE , Prsn_Apellido AS APELLIDO , Prsn_FechaNacimiento AS FECHA_NACIMIENTO , Prsn_Sexo AS SEXO ,EsCi_Id AS ESTADO_ID FROM Gene.tbPersonas", "T");
+            DataSet ds = util.ObtenerDs("Gene.sp_MostrarPersonas", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
@@ -49,15 +49,6 @@ namespace FM_Tickets_WebForm.Clases
 
         public void actualizar(int id,string nombre, string apellido, string sexo ,string fecha ,int estado, int modifica  )
         {
-      /*  @Prsn_Id INT,
-    @Prsn_Nombre VARCHAR(20),
-    @Prsn_Apellido VARCHAR(20),
-    @Prsn_Sexo CHAR(1),
-    @Prsn_FechaNacimiento DATE,
-    @EsCi_Id INT,
-    @Prsn_Modifica INT,
-    @Prsn_FechaModificacion DATETIME,
-    @Prsn_Estado BIT*/
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "[Gene].[sp_ActualizarPersona]";

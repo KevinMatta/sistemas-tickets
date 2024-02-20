@@ -13,7 +13,7 @@ namespace FM_Tickets_WebForm.Clases
         Utilitarios util = new Utilitarios();
         public void CargarGrid(GridView gv)
         {
-            DataSet ds = util.ObtenerDs("SELECT Ciud_Id AS ID , Ciud_Descripcion AS CIUDAD, Estd_Id  AS ESTADO_ID FROM Gene.tbCiudades ", "T");
+            DataSet ds = util.ObtenerDs("Gene.sp_MostrarCiudades", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
@@ -32,12 +32,12 @@ namespace FM_Tickets_WebForm.Clases
 
         public void CargarDDL(DropDownList ddl)
         {
-            util.CargarDDL(ddl, "SELECT Estd_Id,Estd_Descripcion FROM gene.tbEstados WHERE Estd_Estado = 1 ORDER BY Estd_Descripcion");
+            util.CargarDDL(ddl, "Gene.sp_MostrarEstados");
         }
 
         public void Llenar(int id, out string descripcion, out string id_est)
         {
-            DataSet ds = util.ObtenerDs("SELECT*FROM Gene.tbCiudades  WHERE Ciud_Id = " + id, "T");
+            DataSet ds = util.ObtenerDs($"Gene.sp_BuscarCiudad '{id}'", "T");
             descripcion = ds.Tables["T"].Rows[0]["Ciud_Descripcion"].ToString();
             id_est = ds.Tables["T"].Rows[0]["Estd_Id"].ToString();
         }
@@ -45,11 +45,6 @@ namespace FM_Tickets_WebForm.Clases
 
         public void actualizar(int id, string descripcion, string estado_id, int modifica)
         {
-            /*@Ciud_Id VARCHAR(4),
-             @Ciud_Descripcion VARCHAR(20),
-             @Estd_Id VARCHAR(2),
-             @Ciud_Modifica INT,
-             @Ciud_FechaModificacion DATETIME*/
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "[Gene].[sp_ActualizarCiudad]";

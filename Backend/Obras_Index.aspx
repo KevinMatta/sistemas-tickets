@@ -81,7 +81,7 @@
                 <asp:GridView ID="gvObras" runat="server" AutoGenerateColumns="false" CssClass="table  table-striped table-border" AllowPaging="true" OnPageIndexChanging="gvObras_PageIndexChanging">
                     <Columns>
                         <asp:BoundField HeaderText=" ID" DataField="ID" />
-                        <asp:BoundField HeaderText="NOMBRE" DataField="NOMBRE" />
+                        <asp:BoundField HeaderText="OBRA" DataField="Obrs_Descripcion" />
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <button id="btnEditar"  value="Editar" class="btn btn-success" onclick="Editar('<%# Eval("ID") %>');" >Editar</button>

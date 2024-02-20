@@ -26,7 +26,7 @@ namespace FM_Tickets_WebForm
                 {
                     Session["accion"] = "editar";
                     int id = int.Parse(argument);
-                    Session["Obrs_Id"] = id;
+                    Session["ID"] = id;
                     string nombre;
                     Obras.Llenar(id, out nombre);
                     txtObraNombre.Value = nombre;
@@ -57,9 +57,9 @@ namespace FM_Tickets_WebForm
 
         protected void Unnamed_ServerClick(object sender, EventArgs e)
         {
-            if (Session["accion"] == "editar")
+            if (Session["accion"].ToString() == "editar")
             {
-                Obras.Actualizar(int.Parse(Session["Obrs_Id"].ToString()), txtObraNombre.Value, int.Parse(Session["Usro_Id"].ToString()));
+                Obras.Actualizar(int.Parse(Session["ID"].ToString()), txtObraNombre.Value, int.Parse(Session["Usro_Id"].ToString()));
                 Obras.CargarGrid(gvObras);
             }
             else
@@ -67,7 +67,7 @@ namespace FM_Tickets_WebForm
                 Obras.Insertar(txtObraNombre.Value, int.Parse(Session["Usro_Id"].ToString()));
                 Obras.CargarGrid(gvObras);
             }
-            Session["Obrs_Id"] = "";
+            Session["ID"] = "";
             Session["accion"] = "";
             CollapseObras.Value = "false";
         }

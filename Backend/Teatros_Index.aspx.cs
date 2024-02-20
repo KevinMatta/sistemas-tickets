@@ -16,7 +16,7 @@ namespace FM_Tickets_WebForm
             {
                 teatros.CargarGrid(gvTeatros);
                 CollapseTeatro.Value = "false";
-                teatros.CargarDDL(ddlCiudades);
+                teatros.CargarDDL(ddlEstados,ddlCiudades);
             }
             else
             {
@@ -27,12 +27,14 @@ namespace FM_Tickets_WebForm
                 {
                     Session["accion"] = "editar";
                     int id = int.Parse(argument);
-                    Session["Teat_Id"] = id;
+                    Session["ID"] = id;
                     string nombre;
                     string ciudad;
-                    teatros.Llenar(id, out nombre, out ciudad);
+                    string estado;
+                    teatros.Llenar(id, out nombre, out ciudad, out estado);
                     txtTeatro.Value = nombre;
                     ddlCiudades.SelectedValue = ciudad;
+                    ddlEstados.SelectedValue = estado;
                     CollapseTeatro.Value = "true";
 
                 }
@@ -66,9 +68,9 @@ namespace FM_Tickets_WebForm
         protected void btnGuardar_ServerClick(object sender, EventArgs e)
         {
 
-            if (Session["accion"] == "editar")
+            if (Session["accion"].ToString() == "editar")
             {
-                teatros.Actualizar(int.Parse(Session["Teat_Id"].ToString()), txtTeatro.Value, int.Parse(ddlCiudades.SelectedValue), int.Parse(Session["Usro_Id"].ToString()));
+                teatros.Actualizar(int.Parse(Session["ID"].ToString()), txtTeatro.Value, int.Parse(ddlCiudades.SelectedValue), int.Parse(Session["Usro_Id"].ToString()));
                 teatros.CargarGrid(gvTeatros);
             }
             else
@@ -76,7 +78,7 @@ namespace FM_Tickets_WebForm
                 teatros.Insert(txtTeatro.Value, ddlCiudades.SelectedValue, int.Parse(Session["Usro_Id"].ToString()));
                 teatros.CargarGrid(gvTeatros);
             }
-            Session["Teat_Id"] = "";
+            Session["ID"] = "";
             Session["accion"] = "";
             CollapseTeatro.Value = "false";
         }
