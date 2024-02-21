@@ -281,6 +281,7 @@
                 <div class="card-body">
                     <form runat="server">
                    <div class="container body-content">
+                       <asp:ScriptManager runat="server"></asp:ScriptManager>
                   <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                   </asp:ContentPlaceHolder>
 

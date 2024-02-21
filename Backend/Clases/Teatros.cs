@@ -30,12 +30,16 @@ namespace FM_Tickets_WebForm.Clases
             util.EjecutarSP(cmd);
         }
 
-        public void CargarDDL(DropDownList ddlEstados, DropDownList ddlCiudades)
+        public void CargarDDL(DropDownList ddlEstados)
         {
             util.CargarDDL(ddlEstados, "DB_Tickets.Gene.sp_MostrarEstados");
 
-            int idEstado = int.Parse(ddlEstados.SelectedValue);
-            util.CargarDDL(ddlCiudades, $"DB_Tickets.Gene.sp_ddlCiudades {idEstado}");
+        }
+
+        public void Ciudades_CargarDDL(int idEstado, DropDownList ddlCiudades)
+        {
+            util.CargarDDL(ddlCiudades, $"DB_Tickets.Gene.sp_ddlCiudades '{idEstado}'");
+
         }
 
         public void Llenar(int id, out string teatro, out string ciudad, out string estado)

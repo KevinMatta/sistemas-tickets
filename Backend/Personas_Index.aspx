@@ -72,11 +72,10 @@
                 <asp:GridView ID="gvPersonas" runat="server" AutoGenerateColumns="false" CssClass="table  table-striped table-border" AllowPaging="true" OnPageIndexChanging="gvPersonas_PageIndexChanging">
                     <Columns>
                         <asp:BoundField HeaderText=" ID" DataField="ID" />
-                        <asp:BoundField HeaderText="NOMBRE" DataField="NOMBRE" />
-                        <asp:BoundField HeaderText="APELLIDO" DataField="APELLIDO" />
-                        <asp:BoundField HeaderText="FECHA_NACIMIENTO" DataField="FECHA_NACIMIENTO" />
-                        <asp:BoundField HeaderText="SEXO" DataField="SEXO" />
-                        <asp:BoundField HeaderText="ESTADO_ID" DataField="ESTADO_ID" />
+                        <asp:BoundField HeaderText="NOMBRE" DataField="Nombre" />
+                        <asp:BoundField HeaderText="Sexo" DataField="Prsn_Sexo" />
+                        <asp:BoundField HeaderText="ESTADO_ID" DataField="EsCi_Descripcion" />
+                        <asp:BoundField HeaderText="FECHA NACIMIENTO" DataField="Prsn_FechaNacimiento" />
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <button id="btnEditar" text="Editar" class="btn btn-success" value="Editar" onclick="Editar('<%# Eval("ID") %>');" />

@@ -16,7 +16,7 @@ namespace FM_Tickets_WebForm
             {
                 teatros.CargarGrid(gvTeatros);
                 CollapseTeatro.Value = "false";
-                teatros.CargarDDL(ddlEstados,ddlCiudades);
+                teatros.CargarDDL(ddlEstados);
             }
             else
             {
@@ -81,6 +81,11 @@ namespace FM_Tickets_WebForm
             Session["ID"] = "";
             Session["accion"] = "";
             CollapseTeatro.Value = "false";
+        }
+
+        protected void ddlEstados_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            teatros.Ciudades_CargarDDL(int.Parse(ddlEstados.SelectedValue), ddlCiudades);
         }
     }
 }

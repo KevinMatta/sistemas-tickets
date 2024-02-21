@@ -38,7 +38,7 @@ namespace FM_Tickets_WebForm.Clases
 
         public void CargarDDL(DropDownList ddl)
         {
-            util.CargarDDL(ddl, "Gene.sp_MostrarPersonas");
+            util.CargarDDL(ddl, "Gene.sp_MostrarEstadosCiviles");
         }
 
         public void Llenar(int id, out string nombre, out string apellido, out string sexo, out string fecha, out int estado)

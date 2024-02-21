@@ -29,16 +29,20 @@
                               <input runat="server" type="text" class="form-control" placeholder="Teatro (Nombre)" value="" id="txtTeatro" />
                           </div>
                       </div>
-                      <div class="col-md-6">
-                          <div class="form-group">
-                              <asp:DropDownList ID="ddlEstados" runat="server" CssClass="form-control" DataTextField="Estd_Descripcion" DataValueField="ID"></asp:DropDownList>
-                          </div>
-                      </div>
-                      <div class="col-md-6">
-                          <div class="form-group">
-                              <asp:DropDownList ID="ddlCiudades" runat="server" CssClass="form-control" DataTextField="Ciud_Descripcion" DataValueField="ID"></asp:DropDownList>
-                          </div>
-                      </div>
+                      <asp:UpdatePanel runat="server">
+                          <ContentTemplate>
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <asp:DropDownList ID="ddlEstados" runat="server" CssClass="form-control" DataTextField="Estd_Descripcion" DataValueField="ID" AutoPostBack="true" OnSelectedIndexChanged="ddlEstados_SelectedIndexChanged"></asp:DropDownList>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <asp:DropDownList ID="ddlCiudades" runat="server" CssClass="form-control" DataTextField="Ciud_Descripcion" DataValueField="ID"></asp:DropDownList>
+                                  </div>
+                              </div>
+                          </ContentTemplate>
+                      </asp:UpdatePanel>
                       <button runat="server" id="btnGuardar" onserverclick="btnGuardar_ServerClick" class="btnRegister" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                           Guardar
                       </button>
@@ -62,7 +66,7 @@
         <asp:BoundField  HeaderText =" ID" DataField="ID" />
         <asp:BoundField  HeaderText ="TEATRO" DataField="Teat_Descripcion" />
          <asp:BoundField  HeaderText ="CIUDAD" DataField="Ciud_Descripcion" />
-        <asp:BoundField  HeaderText ="ESTADO" DataField="Estd_Descripcion " />
+        <asp:BoundField  HeaderText ="ESTADO" DataField="Estd_Descripcion" />
         <asp:TemplateField>
             <ItemTemplate>
                  <button id="btnEditar" class="btn btn-success" onclick="Editar('<%# Eval("ID") %>');">Editar</button>
