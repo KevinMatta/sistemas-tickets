@@ -29,7 +29,9 @@
 
    <!--Form-->
     <link  rel="stylesheet" href="Content/dist/css/Form.css"/>
-  <!--Boostrap-->  <link rel="stylesheet" href="Content/dist/css/adminlte.css">
+     <!--Factura-->
+  <link  rel="stylesheet" href="Content/dist/css/Factura.css"/>
+  <!--Boostrap-->  <link rel="stylesheet" href="Content/dist/css/Factura.css">
   <!-- DataTable -->
   <link
   rel="stylesheet"
@@ -263,6 +265,12 @@
     <a href="VentaEncabezado_Index.aspx" class="nav-link ">
       <i class="fa fa-table nav-icon"></i>
       <p>Venta encabezado</p>
+    </a>
+  </li>
+         <li class="nav-item">
+    <a href="Factura.aspx" class="nav-link ">
+      <i class="fa fa-table nav-icon"></i>
+      <p>Factura</p>
     </a>
   </li>
      </ul>

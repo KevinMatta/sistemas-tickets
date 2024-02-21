@@ -151,6 +151,7 @@
     <Content Include="Content\dist\css\alt\adminlte.plugins.css" />
     <Content Include="Content\dist\css\alt\adminlte.plugins.min.css" />
     <Content Include="Content\dist\css\bootstrap.min.css" />
+    <Content Include="Content\dist\css\Factura.css" />
     <Content Include="Content\dist\css\Form.css" />
     <Content Include="Content\dist\css\Login.css" />
     <Content Include="Content\dist\img\credit\american-express.png" />
@@ -2120,6 +2121,7 @@
     <Content Include="Content\plugins\uplot\uPlot.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Factura.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Ciudades_Index.aspx" />
@@ -2498,6 +2500,7 @@
     <Compile Include="Clases\Empleados.cs" />
     <Compile Include="Clases\Estados.cs" />
     <Compile Include="Clases\EstadosCiviles.cs" />
+    <Compile Include="Clases\Factura.cs" />
     <Compile Include="Clases\Funciones.cs" />
     <Compile Include="Clases\InicioSesion.cs" />
     <Compile Include="Clases\Obras.cs" />
@@ -2573,6 +2576,13 @@
     </Compile>
     <Compile Include="Empleados_Index.aspx.designer.cs">
       <DependentUpon>Empleados_Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Factura.aspx.cs">
+      <DependentUpon>Factura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Factura.aspx.designer.cs">
+      <DependentUpon>Factura.aspx</DependentUpon>
     </Compile>
     <Compile Include="Usuario_Index.aspx.cs">
       <DependentUpon>Usuario_Index.aspx</DependentUpon>
@@ -2693,6 +2703,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Pages\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
