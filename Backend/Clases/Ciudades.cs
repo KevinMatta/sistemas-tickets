@@ -13,7 +13,7 @@ namespace FM_Tickets_WebForm.Clases
         Utilitarios util = new Utilitarios();
         public void CargarGrid(GridView gv)
         {
-            DataSet ds = util.ObtenerDs("Gene.sp_MostrarCiudades", "T");
+            DataSet ds = util.ObtenerDs("Gene.sp_CiudadesMostrar", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
@@ -32,12 +32,12 @@ namespace FM_Tickets_WebForm.Clases
 
         public void CargarDDL(DropDownList ddl)
         {
-            util.CargarDDL(ddl, "Gene.sp_MostrarEstados");
+            util.CargarDDL(ddl, "Gene.sp_EstadosMostrar");
         }
 
         public void Llenar(int id, out string descripcion, out string id_est)
         {
-            DataSet ds = util.ObtenerDs($"Gene.sp_BuscarCiudad '{id}'", "T");
+            DataSet ds = util.ObtenerDs($"Gene.sp_CiudadBuscar'{id}'", "T");
             descripcion = ds.Tables["T"].Rows[0]["Ciud_Descripcion"].ToString();
             id_est = ds.Tables["T"].Rows[0]["Estd_Id"].ToString();
         }
@@ -47,7 +47,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "[Gene].[sp_ActualizarCiudad]";
+            cmd.CommandText = "[Gene].[sp_CiudadActualizar]";
             cmd.Parameters.Add(new SqlParameter("@Ciud_Id", id));
             cmd.Parameters.Add(new SqlParameter("@Ciud_Descripcion", descripcion));
             cmd.Parameters.Add(new SqlParameter("@Estd_Id", estado_id));
@@ -60,7 +60,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "[Gene].[sp_EliminarCiudad]";
+            cmd.CommandText = "[Gene].[sp_CiudadEliminar]";
             cmd.Parameters.Add(new SqlParameter("@Ciud_Id", id));
             util.EjecutarSP(cmd);
         }

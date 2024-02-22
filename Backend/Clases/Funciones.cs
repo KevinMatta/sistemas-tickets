@@ -13,7 +13,7 @@ namespace FM_Tickets_WebForm.Clases
         Utilitarios util = new Utilitarios();
         public void CargarGrid(GridView gv)
         {
-            DataSet ds = util.ObtenerDs("SELECT Fncs_Id AS ID , Fncs_Fecha AS FECHA ,Obrs_Id AS OBRA_ID FROM [Teat].[tbFunciones]", "T");
+            DataSet ds = util.ObtenerDs("[Teat].[sp_FuncionMostrar]", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
@@ -22,7 +22,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Teat.sp_InsertarFuncion";
+            cmd.CommandText = "Teat.sp_FuncionInsertar";
             cmd.Parameters.Add(new SqlParameter("@Fncs_Fecha", fecha));
             cmd.Parameters.Add(new SqlParameter("@Obrs_Id", id));
             cmd.Parameters.Add(new SqlParameter("@Fncs_Creacion", creacion));
@@ -32,12 +32,12 @@ namespace FM_Tickets_WebForm.Clases
 
         public void CargarDDL(DropDownList ddl)
         {
-            util.CargarDDL(ddl, "SELECT Obrs_Id AS ID, Obrs_Descripcion AS Descripcion FROM Teat.tbObras WHERE Obrs_Estado =1 ORDER BY Obrs_Descripcion");
+            util.CargarDDL(ddl, "[Teat].[sp_ObrasDdl]");
         }
 
         public void Llenar(string id, out string fecha, out string obra)
         {
-            DataSet ds = util.ObtenerDs("SELECT * FROM Teat.tbFunciones WHERE Fncs_Id=" + id, "T");
+            DataSet ds = util.ObtenerDs($"[Teat].[sp_FuncionBuscar] '{id}'", "T");
             fecha = ds.Tables["T"].Rows[0]["Fncs_Fecha"].ToString();
             obra = ds.Tables["T"].Rows[0]["Obrs_Id"].ToString();
         }
@@ -46,7 +46,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Teat.sp_ActualizarFuncion";
+            cmd.CommandText = "Teat.sp_FuncionActualizar";
             cmd.Parameters.Add(new SqlParameter("@Fncs_Id", id));
             cmd.Parameters.Add(new SqlParameter("@Fncs_Fecha", fecha));
             cmd.Parameters.Add(new SqlParameter("@Obrs_Id", obra));
@@ -59,7 +59,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Teat.sp_EliminarFuncion";
+            cmd.CommandText = "Teat.sp_FuncionEliminar";
             cmd.Parameters.Add(new SqlParameter("Fncs_Id", id));
             util.EjecutarSP(cmd);
         }

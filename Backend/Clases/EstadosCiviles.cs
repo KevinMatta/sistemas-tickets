@@ -14,7 +14,7 @@ namespace FM_Tickets_WebForm.Clases
 
         public void CargarGrid(GridView gv)
         {
-            DataSet ds = util.ObtenerDs("DB_Tickets.Gene.sp_MostrarEstadosCiviles", "T");
+            DataSet ds = util.ObtenerDs("Gene.sp_EstadosCivilesMostrar", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
@@ -23,7 +23,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "DB_Tickets.Gene.sp_InsertarEstadoCivil";
+            cmd.CommandText = "Gene.sp_EstadoCivilInsertar";
             cmd.Parameters.Add(new SqlParameter("@EsCi_Descripcion", descripcion));
             cmd.Parameters.Add(new SqlParameter("@EsCi_Creacion", creacion));
             cmd.Parameters.Add(new SqlParameter("@EsCi_FechaCreacion", DateTime.Now));
@@ -32,7 +32,7 @@ namespace FM_Tickets_WebForm.Clases
 
         public void Llenar(int id, out string descripcion)
         {
-            DataSet ds = util.ObtenerDs($"DB_Tickets.Gene.sp_BuscarEstadoCivil {id}", "T");
+            DataSet ds = util.ObtenerDs($"Gene.sp_EstadoCivilBuscar {id}", "T");
             descripcion = ds.Tables["T"].Rows[0]["EsCi_Descripcion"].ToString();
         }
 
@@ -40,7 +40,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "DB_Tickets.Gene.sp_ActualizarEstadoCivil";
+            cmd.CommandText = "Gene.sp_EstadoCivilActualizar";
             cmd.Parameters.Add(new SqlParameter("@EsCi_Id", id));
             cmd.Parameters.Add(new SqlParameter("@EsCi_Descripcion", descripcion));
             cmd.Parameters.Add(new SqlParameter("@EsCi_Modifica", modifica));
@@ -52,7 +52,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "DB_Tickets.Gene.sp_EliminarEstadoCivil";
+            cmd.CommandText = "Gene.sp_EstadoCivilEliminar";
             cmd.Parameters.Add(new SqlParameter("@EsCi_Id", id));
             util.EjecutarSP(cmd);
         }

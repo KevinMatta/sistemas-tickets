@@ -13,7 +13,7 @@ namespace FM_Tickets_WebForm.Clases
         Utilitarios util = new Utilitarios();
         public void CargarGrid(GridView gv)
         {
-            DataSet ds = util.ObtenerDs("sp_MostrarEstados", "T");
+            DataSet ds = util.ObtenerDs("sp_EstadosMostrar", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
@@ -22,7 +22,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Gene.sp_InsertarEstado";
+            cmd.CommandText = "Gene.sp_EstadoInsertar";
             cmd.Parameters.Add(new SqlParameter("@Estd_Id", id));
             cmd.Parameters.Add(new SqlParameter("@Estd_Descripcion", descripcion));
             cmd.Parameters.Add(new SqlParameter("@Estd_Creacion", creacion));
@@ -32,7 +32,7 @@ namespace FM_Tickets_WebForm.Clases
 
         public void Llenar(string id, out string estado)
         {
-            DataSet ds = util.ObtenerDs($"DB_Tickets.Gene.sp_BuscarEstado {id}", "T");
+            DataSet ds = util.ObtenerDs($"Gene.sp_EstadoBuscar {id}", "T");
             estado = ds.Tables["T"].Rows[0]["Estd_Descripcion"].ToString();
         }
          
@@ -40,7 +40,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Gene.sp_ActualizarEstado";
+            cmd.CommandText = "Gene.sp_EstadoActualizar";
             cmd.Parameters.Add(new SqlParameter("Estd_Id", id));
             cmd.Parameters.Add(new SqlParameter("@Estd_Descripcion", estado));
             cmd.Parameters.Add(new SqlParameter("@Estd_Modifica", usua));
@@ -53,7 +53,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Gene.sp_EliminarEstado";
+            cmd.CommandText = "Gene.sp_EstadoEliminar";
             cmd.Parameters.Add(new SqlParameter("Estd_Id", id));
             util.EjecutarSP(cmd);
         }

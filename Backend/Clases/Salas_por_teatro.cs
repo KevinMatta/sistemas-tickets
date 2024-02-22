@@ -22,7 +22,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "[Teat].[sp_InsertarSalaPorTeatro]";
+            cmd.CommandText = "[Teat].[sp_SalaPorTeatroInsertar]";
             cmd.Parameters.Add(new SqlParameter("@Teat_Id", teatro));
             cmd.Parameters.Add(new SqlParameter("@Sala_Id", sala));
             cmd.Parameters.Add(new SqlParameter("@SaTe_Creacion", creacion));
@@ -57,7 +57,7 @@ namespace FM_Tickets_WebForm.Clases
              @AsSa_FechaModificacion DATETIME*/
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "[Teat].[sp_ActualizarSalaPorTeatro]";
+            cmd.CommandText = "[Teat].[sp_SalaPorTeatroActualizar]";
             cmd.Parameters.Add(new SqlParameter("@SaTe_Id", id));
             cmd.Parameters.Add(new SqlParameter("@Teat_Id", teatro_id));
             cmd.Parameters.Add(new SqlParameter("@Sala_Id", sala_id));
@@ -70,7 +70,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "[Teat].[sp_EliminarSalaPorTeatro]";
+            cmd.CommandText = "[Teat].[sp_SalaPorTeatroEliminar]";
             cmd.Parameters.Add(new SqlParameter("@SaTe_Id", id));
             util.EjecutarSP(cmd);
         }

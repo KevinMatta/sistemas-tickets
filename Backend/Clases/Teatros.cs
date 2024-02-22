@@ -13,7 +13,7 @@ namespace FM_Tickets_WebForm.Clases
         Utilitarios util = new Utilitarios();
         public void CargarGrid(GridView gv)
         {
-            DataSet ds = util.ObtenerDs("Teat.sp_MostrarTeatros", "T");
+            DataSet ds = util.ObtenerDs("Teat.sp_TeatrosMostrar", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
@@ -22,7 +22,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Teat.sp_InsertarTeatro";
+            cmd.CommandText = "Teat.sp_TeatroInsertar";
             cmd.Parameters.Add(new SqlParameter("Teat_Descripcion", descripcion));
             cmd.Parameters.Add(new SqlParameter("@Ciud_Id", ciudID));
             cmd.Parameters.Add(new SqlParameter("@Teat_Creacion", creacion));
@@ -32,19 +32,19 @@ namespace FM_Tickets_WebForm.Clases
 
         public void CargarDDL(DropDownList ddlEstados)
         {
-            util.CargarDDL(ddlEstados, "DB_Tickets.Gene.sp_MostrarEstados");
+            util.CargarDDL(ddlEstados, "Gene.sp_EstadosMostrar");
 
         }
 
         public void Ciudades_CargarDDL(int idEstado, DropDownList ddlCiudades)
         {
-            util.CargarDDL(ddlCiudades, $"DB_Tickets.Gene.sp_ddlCiudades '{idEstado}'");
+            util.CargarDDL(ddlCiudades, $"Gene.sp_CiudadesDdl '{idEstado}'");
 
         }
 
         public void Llenar(int id, out string teatro, out string ciudad, out string estado)
         {
-            DataSet ds = util.ObtenerDs($"Teat.BuscarTeatro '{id}'", "T");
+            DataSet ds = util.ObtenerDs($"Teat.TeatroBuscar '{id}'", "T");
             teatro = ds.Tables["T"].Rows[0]["Teat_Descripcion"].ToString();
             ciudad  = ds.Tables["T"].Rows[0]["Ciud_Id"].ToString();
             estado = ds.Tables["T"].Rows[0]["Estd_Id"].ToString();
@@ -54,7 +54,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Teat.sp_ActualizarTeatro";
+            cmd.CommandText = "Teat.sp_TeatroActualizar";
             cmd.Parameters.Add(new SqlParameter("@Teat_Id", id));
             cmd.Parameters.Add(new SqlParameter("@Teat_Descripcion", estado));
             cmd.Parameters.Add(new SqlParameter("@Ciud_Id", ciudad));
@@ -68,7 +68,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Teat.sp_EliminarTeatro";
+            cmd.CommandText = "Teat.sp_TeatroEliminar";
             cmd.Parameters.Add(new SqlParameter("Teat_Id", id));
             util.EjecutarSP(cmd);
         }

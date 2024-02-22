@@ -23,7 +23,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Teat.sp_InsertarVentaEncabezado";
+            cmd.CommandText = "Teat.sp_VentaEncabezadoInsertar";
             cmd.Parameters.Add(new SqlParameter("@Prsn_Id", personaID));
             cmd.Parameters.Add(new SqlParameter("@Vnts_Fecha", DateTime.Now));
             cmd.Parameters.Add(new SqlParameter("@Vnts_Creacion", creacion));

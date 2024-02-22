@@ -14,7 +14,7 @@ namespace FM_Tickets_WebForm.Clases
 
         public void CargarPersonas(GridView gv)
         {
-            DataSet ds = util.ObtenerDs("Gene.sp_MostrarPersonas", "T");
+            DataSet ds = util.ObtenerDs("Gene.sp_PersonasMostrar", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
@@ -23,7 +23,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Teat.spInsertarVentaDetalle";
+            cmd.CommandText = "Teat.sp_VentaDetalleInsertar";
             cmd.Parameters.Add(new SqlParameter("VtDe_Cantidad", cantidad));
             cmd.Parameters.Add(new SqlParameter("Vnts_Id", ventaID));
             cmd.Parameters.Add(new SqlParameter("@Secc_Id", seccionID));
@@ -36,50 +36,50 @@ namespace FM_Tickets_WebForm.Clases
 
         public void CargarFacturas(GridView gv)
         {
-            DataSet ds = util.ObtenerDs("Teat.sp_MostrarFacturas", "T");
+            DataSet ds = util.ObtenerDs("Teat.sp_FacturasMostrar", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
 
         public void BuscarFactura(GridView gv, int facturaID)
         {
-            DataSet ds = util.ObtenerDs($"Teat.sp_BuscarFactura '{facturaID}'", "T");
+            DataSet ds = util.ObtenerDs($"Teat.sp_FacturaBuscar '{facturaID}'", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
 
         public void Estados_CargarDDL(DropDownList ddlEstados)
         {
-            util.CargarDDL(ddlEstados, "Gene.sp_MostrarEstados");
+            util.CargarDDL(ddlEstados, "Gene.sp_EstadosMostrar");
 
         }
 
         public void Ciudades_CargarDDL(int idEstado, DropDownList ddlCiudades)
         {
-            util.CargarDDL(ddlCiudades, $"Gene.sp_ddlCiudades '{idEstado}'");
+            util.CargarDDL(ddlCiudades, $"Gene.sp_CiudadesDdl '{idEstado}'");
 
         }
 
         public void Teatros_CargarDDL(int idCiudad, DropDownList ddlTeatros)
         {
-            util.CargarDDL(ddlTeatros, $"Teat.sp_ddlTeatros '{idCiudad}'");
+            util.CargarDDL(ddlTeatros, $"Teat.sp_TeatrosDdl '{idCiudad}'");
 
         }
 
         public void Funciones_CargarDDL(int idTeatro, DropDownList ddlFunciones)
         {
-            util.CargarDDL(ddlFunciones, $"Teat.sp_ddlFunciones '{idTeatro}'");
+            util.CargarDDL(ddlFunciones, $"Teat.sp_FuncionesDdl '{idTeatro}'");
 
         }
 
         public void Secciones_CargarDDL(DropDownList ddlSecciones)
         {
-            util.CargarDDL(ddlSecciones, "Teat.sp_ddlSecciones");
+            util.CargarDDL(ddlSecciones, "Teat.sp_SeccionesDdl");
 
         }
         public void Personas_CargarDDL(DropDownList ddlEstados)
         {
-            util.CargarDDL(ddlEstados, "Gene.sp_MostrarPersonas");
+            util.CargarDDL(ddlEstados, "Gene.sp_PersonasMostrar");
 
         }
 

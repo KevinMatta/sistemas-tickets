@@ -18,7 +18,7 @@ namespace FM_Tickets_WebForm.Clases
 
         public void CargarGrid(GridView gv)
         {
-            DataSet ds = util.ObtenerDs("Teat.sp_MostrarEmpleados", "T");
+            DataSet ds = util.ObtenerDs("Teat.sp_EmpleadosMostrar", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
@@ -26,7 +26,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "[Teat].[sp_InsertarEmpleado]";
+            cmd.CommandText = "[Teat].[sp_EmpleadoInsertar]";
             cmd.Parameters.Add(new SqlParameter("@Empl_Puesto", puesto));
             cmd.Parameters.Add(new SqlParameter("@Empl_Salario", salario));
             cmd.Parameters.Add(new SqlParameter("@Prsn_Id", personaID));
@@ -37,12 +37,12 @@ namespace FM_Tickets_WebForm.Clases
 
         public void CargarDDL(DropDownList ddl)
         {
-            util.CargarDDL(ddl, "Gene.sp_MostrarPersonas");
+            util.CargarDDL(ddl, "Gene.sp_PersonasMostrar");
         }
 
         public void Llenar(int id, out string puesto, out string salario, out string personaID)
         {
-            DataSet ds = util.ObtenerDs($"Teat.sp_BuscarEmpleados '{id}'", "T");
+            DataSet ds = util.ObtenerDs($"Teat.sp_EmpleadosBuscar '{id}'", "T");
             puesto = ds.Tables["T"].Rows[0]["Empl_Puesto"].ToString();
             salario = ds.Tables["T"].Rows[0]["Empl_Salario"].ToString();
             personaID = ds.Tables["T"].Rows[0]["Prsn_Id"].ToString();
@@ -52,7 +52,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "[Teat].[sp_ActualizarEmpleado]";
+            cmd.CommandText = "[Teat].[sp_EmpleadoActualizar]";
             cmd.Parameters.Add(new SqlParameter("@Empl_Id", id));
             cmd.Parameters.Add(new SqlParameter("@Empl_Puesto", puesto));
             cmd.Parameters.Add(new SqlParameter("@Empl_salario", salario));
@@ -66,7 +66,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "[Teat].[sp_EliminarEmpleado]";
+            cmd.CommandText = "[Teat].[sp_EmpleadoEliminar]";
             cmd.Parameters.Add(new SqlParameter("@Empl_Id", id));
             util.EjecutarSP(cmd);
         }

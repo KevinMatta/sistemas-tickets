@@ -26,7 +26,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Teat.sp_InsertarSeccion";
+            cmd.CommandText = "Teat.sp_SeccionInsertar";
             cmd.Parameters.Add(new SqlParameter("@Secc_Descripcion ", descripcion));
             cmd.Parameters.Add(new SqlParameter("@Secc_Precio", precio));
             cmd.Parameters.Add(new SqlParameter("@SaTe_Id", sate));
@@ -47,7 +47,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Teat.sp_ActualizarSeccion";
+            cmd.CommandText = "Teat.sp_SeccionActualizar";
             cmd.Parameters.Add(new SqlParameter("@Secc_Id", id));
             cmd.Parameters.Add(new SqlParameter("@Secc_Descripcion", estado));
             cmd.Parameters.Add(new SqlParameter("@Secc_Precio", precio));
@@ -62,7 +62,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Teat.sp_EliminarSeccion";
+            cmd.CommandText = "Teat.sp_SeccionEliminar";
             cmd.Parameters.Add(new SqlParameter("Secc_Id", id));
             util.EjecutarSP(cmd);
         }

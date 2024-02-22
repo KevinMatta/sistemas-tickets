@@ -13,7 +13,7 @@ namespace FM_Tickets_WebForm.Clases
         Utilitarios util = new Utilitarios();
         public void CargarGrid(GridView gv)
         {
-            DataSet ds = util.ObtenerDs("Acce.sp_MostrarUsuarios", "T");
+            DataSet ds = util.ObtenerDs("Acce.sp_UsuariosMostrar", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
@@ -22,7 +22,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "[Acce].[sp_InsertarUsuario]";
+            cmd.CommandText = "[Acce].[sp_UsuarioInsertar]";
             cmd.Parameters.Add(new SqlParameter("@Usro_Usuario", usuario));
             cmd.Parameters.Add(new SqlParameter("@Usro_Clave", clave));
             cmd.Parameters.Add(new SqlParameter("@Prsn_Id", personaID));
@@ -33,12 +33,12 @@ namespace FM_Tickets_WebForm.Clases
 
         public void CargarDDL(DropDownList ddl)
         {
-            util.CargarDDL(ddl, "Teat.sp_ddlEmpleados");
+            util.CargarDDL(ddl, "Teat.sp_EmpleadosDdl");
         }
 
         public void Llenar(string id, out string usuario, out string clave, out string personaID)
         {
-            DataSet ds = util.ObtenerDs($"Acce.sp_BuscarUsuario '{id}'", "T");
+            DataSet ds = util.ObtenerDs($"Acce.sp_UsuarioBuscar '{id}'", "T");
             usuario = ds.Tables["T"].Rows[0]["USUARIO"].ToString();
             clave = ds.Tables["T"].Rows[0]["CLAVE"].ToString();
             personaID = ds.Tables["T"].Rows[0]["NOMBRE_ID"].ToString();
@@ -49,7 +49,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "[Acce].[sp_ActualizarUsuario]";
+            cmd.CommandText = "[Acce].[sp_UsuarioActualizar]";
             cmd.Parameters.Add(new SqlParameter("@Usro_Id", id));
             cmd.Parameters.Add(new SqlParameter("@Usro_Usuario", usuario));
             cmd.Parameters.Add(new SqlParameter("@Usro_Clave", clave));
@@ -63,7 +63,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "[Acce].[sp_EliminarUsuario]";
+            cmd.CommandText = "[Acce].[sp_UsuarioEliminar]";
             cmd.Parameters.Add(new SqlParameter("@Usro_Id", id));
             util.EjecutarSP(cmd);
         }

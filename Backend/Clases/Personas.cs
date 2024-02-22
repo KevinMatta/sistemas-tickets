@@ -13,7 +13,7 @@ namespace FM_Tickets_WebForm.Clases
         Utilitarios util = new Utilitarios();
         public void CargarGrid(GridView gv)
         {
-            DataSet ds = util.ObtenerDs("Gene.sp_MostrarPersonas", "T");
+            DataSet ds = util.ObtenerDs("Gene.sp_PersonasMostrar", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
@@ -21,7 +21,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "[Gene].[sp_InsertarPersona]";
+            cmd.CommandText = "[Gene].[sp_PersonaInsertar]";
             cmd.Parameters.Add(new SqlParameter("@Prsn_Nombre", nombre));
             cmd.Parameters.Add(new SqlParameter("@Prsn_Apellido", apellido));
             cmd.Parameters.Add(new SqlParameter("@Prsn_Sexo", sexo));
@@ -38,12 +38,12 @@ namespace FM_Tickets_WebForm.Clases
 
         public void CargarDDL(DropDownList ddl)
         {
-            util.CargarDDL(ddl, "Gene.sp_MostrarEstadosCiviles");
+            util.CargarDDL(ddl, "Gene.sp_EstadosCivilesMostrar");
         }
 
         public void Llenar(int id, out string nombre, out string apellido, out string sexo, out string fecha, out int estado)
         {
-            DataSet ds = util.ObtenerDs($"Gene.sp_BuscarPersona '{id}'", "T");
+            DataSet ds = util.ObtenerDs($"Gene.sp_PersonaBuscar '{id}'", "T");
             nombre = ds.Tables["T"].Rows[0]["Prsn_Nombre"].ToString();
             apellido = ds.Tables["T"].Rows[0]["Prsn_Apellido"].ToString();
             sexo = ds.Tables["T"].Rows[0]["Prsn_Sexo"].ToString();
@@ -55,7 +55,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "[Gene].[sp_ActualizarPersona]";
+            cmd.CommandText = "[Gene].[sp_PersonaActualizar]";
             cmd.Parameters.Add(new SqlParameter("@Prsn_Id", id));
             cmd.Parameters.Add(new SqlParameter("@Prsn_Nombre", nombre));
             cmd.Parameters.Add(new SqlParameter("@Prsn_Apellido", apellido));
@@ -71,7 +71,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "[Gene].[sp_EliminarPersona]";
+            cmd.CommandText = "[Gene].[sp_PersonaEliminar]";
             cmd.Parameters.Add(new SqlParameter("@Prsn_Id", id));
             util.EjecutarSP(cmd);
         }

@@ -14,14 +14,14 @@ namespace FM_Tickets_WebForm.Clases
 
         public void CargarPersonas(GridView gv)
         {
-            DataSet ds = util.ObtenerDs("Gene.sp_MostrarPersonas", "T");
+            DataSet ds = util.ObtenerDs("Gene.sp_PersonasMostrar", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
 
         public void CargarFacturas(GridView gv)
         {
-            DataSet ds = util.ObtenerDs("Teat.sp_MostrarFacturas", "T");
+            DataSet ds = util.ObtenerDs("Teat.sp_FacturasMostrar", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }

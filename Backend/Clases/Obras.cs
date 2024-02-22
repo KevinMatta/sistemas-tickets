@@ -13,7 +13,7 @@ namespace FM_Tickets_WebForm.Clases
         Utilitarios util = new Utilitarios();
         public void CargarGrid(GridView gv)
         {
-            DataSet ds = util.ObtenerDs("Teat.sp_MostrarObras", "T");
+            DataSet ds = util.ObtenerDs("Teat.sp_ObrasMostrar", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
@@ -22,7 +22,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Teat.sp_InsertarObra";
+            cmd.CommandText = "Teat.sp_ObraInsertar";
             cmd.Parameters.Add(new SqlParameter("Obrs_Descripcion", descrip));
             cmd.Parameters.Add(new SqlParameter("@Obrs_Creacion", usua));
             cmd.Parameters.Add(new SqlParameter("@Obrs_FechaCreacion", DateTime.Now));
@@ -30,7 +30,7 @@ namespace FM_Tickets_WebForm.Clases
         }
         public void Llenar(int id, out string nombre)
         {
-            DataSet ds = util.ObtenerDs($"Teat.sp_BuscarObra '{id}'", "T");
+            DataSet ds = util.ObtenerDs($"Teat.sp_ObraBuscar '{id}'", "T");
             nombre = ds.Tables["T"].Rows[0]["Obrs_Descripcion"].ToString();
         }
 
@@ -38,7 +38,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Teat.sp_ActualizarObra";
+            cmd.CommandText = "Teat.sp_ObraActualizar";
             cmd.Parameters.Add(new SqlParameter("Obrs_Id", id));
             cmd.Parameters.Add(new SqlParameter("Obrs_Descripcion", nombre));
             cmd.Parameters.Add(new SqlParameter("@Obrs_Modifica", usua));
@@ -51,7 +51,7 @@ namespace FM_Tickets_WebForm.Clases
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Teat.sp_EliminarObra";
+            cmd.CommandText = "Teat.sp_ObraEliminar";
             cmd.Parameters.Add(new SqlParameter("Obrs_Id", id));
             util.EjecutarSP(cmd);
         }
