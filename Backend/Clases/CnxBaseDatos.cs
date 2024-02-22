@@ -14,7 +14,8 @@ namespace FM_Tickets_WebForm.Clases
         {
             //DESKTOP-FSOEUAA\SQLEXPRESS
             //Laptop-Kevin\SQLEXPRESS
-            con = @"data source = Laptop-Kevin\SQLEXPRESS; initial catalog = DB_Tickets; user id = ADMIN123; password = Admin123;";
+            //PC\SQQLS
+            con = @"data source = PC\SQQLS; initial catalog = DB_Tickets; user id = ADMIN123; password = Admin123;";
 			cnx.ConnectionString = con;
 			return cnx;
         }

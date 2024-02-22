@@ -255,18 +255,6 @@
       <p>Teatros</p>
     </a>
   </li>
-  <li class="nav-item">
-    <a href="Venta_DetalleIndex.aspx" class="nav-link ">
-      <i class="fa fa-table nav-icon"></i>
-      <p>Venta detalle</p>
-    </a>
-  </li>
-  <li class="nav-item">
-    <a href="VentaEncabezado_Index.aspx" class="nav-link ">
-      <i class="fa fa-table nav-icon"></i>
-      <p>Venta encabezado</p>
-    </a>
-  </li>
          <li class="nav-item">
     <a href="Factura.aspx" class="nav-link ">
       <i class="fa fa-table nav-icon"></i>

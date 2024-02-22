@@ -60,54 +60,69 @@
                 <i class="fas fa-user-plus"></i>Agregar nuevo cliente
             </button>
         </header>
+        <div class="card">
+            <div class="card card-body">
+                <div class="container">
+                    <div class="container register">
+                        <div class="row">
+                            <div class="col-md-3 register-left">
+                                <img src="Content/dist/img/FM.png" alt="" />
+                            </div>
+                            <div class="col-md-9 register-right">
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <h3 class="register-heading">Facturacion</h3>
+                                        <div class="row register-form">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <asp:DropDownList ID="ddlPersonas" runat="server" CssClass="form-control" DataTextField="Prsn_Identidad" DataValueField="ID"></asp:DropDownList>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input id="nmbCantidad" runat="server" type="number" name="cantidad" value="" class="form-control" placeholder="Cantidad"/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <asp:DropDownList ID="ddlEstados" runat="server" CssClass="form-control" DataTextField="Estd_Descripcion" DataValueField="ID" AutoPostBack="true" OnSelectedIndexChanged="ddlEstados_SelectedIndexChanged"></asp:DropDownList>
+                                                </div>
+                                                <div class="form-group">
+                                                    <asp:DropDownList ID="ddlFunciones" runat="server" CssClass="form-control" DataTextField="Obrs_Descripcion" DataValueField="ID"></asp:DropDownList>
+                                                </div>
 
-        <!--Formulario venta detalle-->
-        <div class="form">
-            <div class="dbl-field">
-                <div class="field">
-                    <asp:DropDownList ID="ddlPersonas" runat="server" CssClass="form-control" DataTextField="Prsn_Identidad" DataValueField="ID"></asp:DropDownList>
-                </div>
-                <div class="button-area">
-                    <button runat="server" onserverclick="btnSeleccionar_ServerClick" id="btnSeleccionar" type="button" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i>Seleccionar cliente</button>
-                    <span></span>
-                </div>
-            </div>
-                    <!--Venta ID-->
-            <div class="dbl-field">
-                <div class="field">
-                    <h6 class="h6"></h6>
-                    <input id="nmbCantidad" runat="server" type="number" name="cantidad" value="" />
-                </div>
-                <div class="field">
-                    <h6 class="h6"></h6>
-                    <asp:DropDownList ID="ddlEstados" runat="server" CssClass="form-control" DataTextField="Estd_Descripcion" DataValueField="ID" AutoPostBack="true" OnSelectedIndexChanged="ddlEstados_SelectedIndexChanged"></asp:DropDownList>
-                </div>
-                <div class="field">
-                    <h6 class="h6"></h6>
-                    <asp:DropDownList ID="ddlCiudades" runat="server" CssClass="form-control" DataTextField="Ciud_Descripcion" DataValueField="ID" AutoPostBack="true" OnSelectedIndexChanged="ddlCiudades_SelectedIndexChanged"></asp:DropDownList>
-                </div>
-                <div class="field">
-                    <h6 class="h6"></h6>
-                    <asp:DropDownList ID="ddlTeatros" runat="server" CssClass="form-control" DataTextField="Teat_Descripcion" DataValueField="ID" AutoPostBack="true" OnSelectedIndexChanged="ddlTeatros_SelectedIndexChanged"></asp:DropDownList>
-                </div>
-                <div class="field">
-                    <h6 class="h6"></h6>
-                    <asp:DropDownList ID="ddlFunciones" runat="server" CssClass="form-control" DataTextField="Obrs_Descripcion" DataValueField="ID"></asp:DropDownList>
-                </div>
-                <div class="field">
-                    <h6 class="h6"></h6>
-                    <asp:DropDownList ID="ddlSecciones" runat="server" CssClass="form-control" DataTextField="Secc_Descripcion" DataValueField="ID"></asp:DropDownList>
-                </div>
-            </div>
-            <div class="button-area">
-                <button runat="server" id="Agregar" type="button" class="btn btn-primary" onserverclick="Agregar_ServerClick"><i class="fa-solid fa-floppy-disk"></i>Agregar</button>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <button runat="server" onserverclick="btnSeleccionar_ServerClick" id="Button1" type="button" class="btn btn-danger " ><i class="fa-solid fa-floppy-disk"></i>Seleccionar cliente</button>
 
+                                                </div>
+                                                <div class="form-group">
+                                                    <asp:DropDownList ID="ddlCiudades" runat="server" CssClass="form-control" DataTextField="Ciud_Descripcion" DataValueField="ID" AutoPostBack="true" OnSelectedIndexChanged="ddlCiudades_SelectedIndexChanged"></asp:DropDownList>
 
-                <button runat="server" id="btnFinalizar" type="button" class="btn btn-primary" onserverclick="btnFinalizar_ServerClick"><i class="fa-solid fa-floppy-disk"></i>Finalizar</button>
+                                                </div>
+                                                <div class="form-group">
+                                                    <asp:DropDownList ID="ddlTeatros" runat="server" CssClass="form-control" DataTextField="Teat_Descripcion" DataValueField="ID" AutoPostBack="true" OnSelectedIndexChanged="ddlTeatros_SelectedIndexChanged"></asp:DropDownList>
+                                                </div>
+                                                <div class="form-group">
+                                                    <asp:DropDownList ID="ddlSecciones" runat="server" CssClass="form-control" DataTextField="Secc_Descripcion" DataValueField="ID"></asp:DropDownList>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <button runat="server" id="Agregar" type="button" class="btnRegister" onserverclick="Agregar_ServerClick"><i class="fa-solid fa-floppy-disk"></i>Agregar</button>
 
+                                                <button runat="server" id="btnFinalizar" type="button" class="btnRegister" onserverclick="btnFinalizar_ServerClick"><i class="fa-solid fa-floppy-disk"></i>Finalizar</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+        <!--Formulario venta detalle-->
     <!--fas fa-trash-alt-->
 
 

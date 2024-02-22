@@ -29,6 +29,11 @@
             opacity: 0.7;
         }
 
+.dbl-field {
+    flex: 0 0 calc(33.333% - 10px); /* Adjust the width for three items per row */
+    margin-right: 10px; /* Adjust the right margin for spacing between elements */
+}
+
 .form .dbl-field {
     display: flex;
     margin-bottom: 25px;
