@@ -15,6 +15,33 @@ namespace FM_Tickets_WebForm
     {
 
         /// <summary>
+        /// Control Hf_Asientos_sala.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hf_Asientos_sala;
+
+        /// <summary>
+        /// Control ddlAsiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAsiento;
+
+        /// <summary>
+        /// Control ddlSala_por_teatro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSala_por_teatro;
+
+        /// <summary>
         /// Control gvAsientosporSala.
         /// </summary>
         /// <remarks>
