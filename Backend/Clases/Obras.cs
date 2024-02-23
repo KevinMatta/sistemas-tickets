@@ -17,6 +17,10 @@ namespace FM_Tickets_WebForm.Clases
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
+        public void CargarObras(DropDownList ddl)
+        {
+            util.CargarDDL(ddl, "Teat.sp_ObrasDdl");
+        }
 
         public void Insertar(string descrip, int usua)
         {

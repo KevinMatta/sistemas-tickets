@@ -18,21 +18,33 @@
                                             <div class="row register-form">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="number" class="form-control" placeholder="Numero de identidad" value="" id="txtId" runat="server" />
+                                                        <input type="number" class="form-control" placeholder="identidad" value="" id="txtId" runat="server" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder=" Nombre" value="" id="txtNombre" runat="server" />
+                                                        <input type="text" class="form-control" placeholder="Nombre" value="" id="txtNombre" runat="server" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder=" Sexo" value="" id="txtSexo" runat="server" />
+                                                        <input type="date" class="form-control" placeholder="Fecha de nacimiento" value="" id="txtFechaN" runat="server" />
                                                     </div>
+
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <asp:DropDownList ID="ddlEstadoCiviles" runat="server" CssClass="form-control"></asp:DropDownList>
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="date" class="form-control" placeholder=" Fecha de nacimiento" value="" id="txtFechaN" runat="server" />
+                                                        <input type="text" class="form-control" placeholder="Apellido" value="" id="txtApellido" runat="server" />
+
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="radMasculino">
+                                                            <input type="radio" id="radMasculino" runat="server" name="sexo" value="Masculino" />
+                                                            Masculino
+                                                        </label>
+                                                        <label for="radFemenino">
+                                                            <input type="radio" id="radFemenino" runat="server" name="sexo" value="Femenino" />
+                                                            Femenino
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -41,7 +53,7 @@
                                                     <button runat="server" id="btnCerar" class="btnRegister" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                                         Cerrar
                                                     </button>
-                                                    <button runat="server" id="btnGuardar" class="btnRegister" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                                    <button onserverclick="btnGuardarPersona_ServerClick" runat="server" id="btnGuardarPersona" class="btnRegister" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                                         Guardar
                                                     </button>
                                                 </div>
@@ -60,6 +72,8 @@
                 <i class="fas fa-user-plus"></i>Agregar nuevo cliente
             </button>
         </header>
+
+
         <div class="card">
             <div class="card card-body">
                 <div class="container">
@@ -75,33 +89,26 @@
                                         <div class="row register-form">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <asp:DropDownList ID="ddlPersonas" runat="server" CssClass="form-control" DataTextField="Prsn_Identidad" DataValueField="ID"></asp:DropDownList>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input id="nmbCantidad" runat="server" type="number" name="cantidad" value="" class="form-control" placeholder="Cantidad"/>
-                                                </div>
-                                                <div class="form-group">
-                                                    <asp:DropDownList ID="ddlEstados" runat="server" CssClass="form-control" DataTextField="Estd_Descripcion" DataValueField="ID" AutoPostBack="true" OnSelectedIndexChanged="ddlEstados_SelectedIndexChanged"></asp:DropDownList>
-                                                </div>
-                                                <div class="form-group">
-                                                    <asp:DropDownList ID="ddlFunciones" runat="server" CssClass="form-control" DataTextField="Obrs_Descripcion" DataValueField="ID"></asp:DropDownList>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <button runat="server" onserverclick="btnSeleccionar_ServerClick" id="Button1" type="button" class="btn btn-danger " ><i class="fa-solid fa-floppy-disk"></i>Seleccionar cliente</button>
-
-                                                </div>
-                                                <div class="form-group">
-                                                    <asp:DropDownList ID="ddlCiudades" runat="server" CssClass="form-control" DataTextField="Ciud_Descripcion" DataValueField="ID" AutoPostBack="true" OnSelectedIndexChanged="ddlCiudades_SelectedIndexChanged"></asp:DropDownList>
-
+                                                    <asp:DropDownList ID="ddlPersonas" runat="server" CssClass="form-control" DataTextField="Prsn_Identidad" DataValueField="NOMBRE" AutoPostBack="true" OnSelectedIndexChanged="ddlPersonas_SelectedIndexChanged"></asp:DropDownList>
                                                 </div>
                                                 <div class="form-group">
                                                     <asp:DropDownList ID="ddlTeatros" runat="server" CssClass="form-control" DataTextField="Teat_Descripcion" DataValueField="ID" AutoPostBack="true" OnSelectedIndexChanged="ddlTeatros_SelectedIndexChanged"></asp:DropDownList>
                                                 </div>
                                                 <div class="form-group">
-                                                    <asp:DropDownList ID="ddlSecciones" runat="server" CssClass="form-control" DataTextField="Secc_Descripcion" DataValueField="ID"></asp:DropDownList>
+                                                    <asp:DropDownList ID="ddlSecciones" runat="server" CssClass="form-control" DataTextField="Secc_Descripcion" DataValueField="ID" AutoPostBack="true" OnSelectedIndexChanged="ddlSecciones_SelectedIndexChanged"></asp:DropDownList>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input id="txtCliente" runat="server" type="text" name="cliente" value="" class="form-control" placeholder="Cliente" readonly />
+                                                </div>
+                                                <div class="form-group">
+                                                    <asp:DropDownList ID="ddlFunciones" runat="server" CssClass="form-control" DataTextField="Obrs_Descripcion" DataValueField="ID"></asp:DropDownList>
+                                                </div>
+                                                <div class="form-group">
+                                                    <asp:DropDownList ID="ddlAsientos" runat="server" CssClass="form-control" DataTextField="Asnt_Descripcion" DataValueField="ID"></asp:DropDownList>
                                                 </div>
                                             </div>
                                         </div>
@@ -122,64 +129,58 @@
             </div>
         </div>
     </div>
-        <!--Formulario venta detalle-->
+
+    <!--Formulario venta detalle-->
     <!--fas fa-trash-alt-->
 
-
-    <!--GridView facturas detalle-->
-<div class="container">
-    <div class="card">
-        <div class="card-body">
-            <div class="table-responsive">
-                <asp:GridView ID="gvFacturaDetalle" runat="server" AutoGenerateColumns="false" CssClass="table  table-striped table-border" AllowPaging="true" OnPageIndexChanging="gvFacturaDetalle_PageIndexChanging">
-                    <Columns>
-                        <asp:TemplateField>
-                            <ItemTemplate>
-                                <button id="btnEliminar" class="btn btn-danger" onclick="Eliminar('<%# Eval("ID") %>');">Eliminar</button>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:BoundField HeaderText=" ID" DataField="ID" />
-                        <asp:BoundField HeaderText="NOMBRE" DataField="Nombre" />
-                        <asp:BoundField HeaderText="CANTIDAD" DataField="VtDe_Cantidad" />
-                        <asp:BoundField HeaderText="OBRA" DataField="Obrs_Descripcion" />
-                        <asp:BoundField HeaderText="PRECIO" DataField="Secc_Precio" />
-                        <asp:BoundField HeaderText="SECCION" DataField="Secc_Descripcion" />
-                        <asp:BoundField HeaderText="SALA" DataField="Sala_Descripcion" />
-                        <asp:BoundField HeaderText="TEATRO" DataField="Teat_Descripcion" />
-                        <asp:BoundField HeaderText="CIUDAD" DataField="Ciud_Descripcion" />
-                        <asp:BoundField HeaderText="FECHA" DataField="Fncs_Fecha" />
-                    </Columns>
-                </asp:GridView>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-    <!--GridView facturas finales-->
-    <div class="container collapse">
-        <div class="card">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <asp:GridView ID="gvFacturas" runat="server" AutoGenerateColumns="false" CssClass="table  table-striped table-border" AllowPaging="true" OnPageIndexChanging="gvFacturas_PageIndexChanging">
-                        <Columns>
-                            <asp:BoundField HeaderText=" ID" DataField="ID" />
-                            <asp:BoundField HeaderText="NOMBRE" DataField="Nombre" />
-                            <asp:BoundField HeaderText="CANTIDAD" DataField="VtDe_Cantidad" />
-                            <asp:BoundField HeaderText="OBRA" DataField="Obrs_Descripcion" />
-                            <asp:BoundField HeaderText="PRECIO" DataField="Secc_Precio" />
-                            <asp:BoundField HeaderText="SECCION" DataField="Secc_Descripcion" />
-                            <asp:BoundField HeaderText="SALA" DataField="Sala_Descripcion" />
-                            <asp:BoundField HeaderText="TEATRO" DataField="Teat_Descripcion" />
-                            <asp:BoundField HeaderText="CIUDAD" DataField="Ciud_Descripcion" />
-                            <asp:BoundField HeaderText="FECHA" DataField="Fncs_Fecha" />
-                        </Columns>
-                    </asp:GridView>
+    <asp:Panel ID="pnlFacturaDetalle" runat="server" Visible="false">
+        <!--GridView facturas detalle-->
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <asp:GridView ID="gvFacturaDetalle" runat="server" AutoGenerateColumns="false" CssClass="table  table-striped table-border" AllowPaging="true" OnPageIndexChanging="gvFacturaDetalle_PageIndexChanging">
+                            <Columns>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <button id="btnEliminar" class="btn btn-danger" onclick="Eliminar('<%# Eval("ID") %>');">Eliminar</button>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField HeaderText=" ID" DataField="ID" />
+                                <asp:BoundField HeaderText="NOMBRE" DataField="Nombre" />
+                                <asp:BoundField HeaderText="CANTIDAD" DataField="VtDe_Cantidad" />
+                                <asp:BoundField HeaderText="OBRA" DataField="Obrs_Descripcion" />
+                                <asp:BoundField HeaderText="PRECIO" DataField="Secc_Precio" />
+                                <asp:BoundField HeaderText="SECCION" DataField="Secc_Descripcion" />
+                            </Columns>
+                        </asp:GridView>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </asp:Panel>
 
+    <!--GridView facturas enccabezado-->
+    <asp:Panel ID="pnlFacturaEncabezado" runat="server" Visible="false">
+        <div class="container ">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <asp:GridView ID="gvFacturas" runat="server" AutoGenerateColumns="false" CssClass="table  table-striped table-border" AllowPaging="true" OnPageIndexChanging="gvFacturas_PageIndexChanging">
+                            <Columns>
+                                <asp:BoundField HeaderText=" ID" DataField="ID" />
+                                <asp:BoundField HeaderText="NOMBRE" DataField="Nombre" />
+                                <asp:BoundField HeaderText="TOTAL" DataField="TOTAL" />
+                                <asp:BoundField HeaderText="FECHA" DataField="Vnts_Fecha" />
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </asp:Panel>
+
+    <script src="Content/iziToast-master/dist/js/iziToast.js"></script>
 
 
 </asp:Content>

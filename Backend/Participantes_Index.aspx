@@ -25,18 +25,18 @@
                   <div class="row register-form">
                       <div class="col-md-6">
                           <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Rol" value="" id="txtRol" />
+                              <input type="text" class="form-control" placeholder="Rol" value="" id="txtRol"  runat="server"/>
                           </div>
                             <div class="form-group">
-                          <input type="text" class="form-control" placeholder="Obra  (ID)" value="" id="txtObraID" />
+                          <asp:DropDownList ID="ddlObras" runat="server" CssClass="form-control" DataTextField="Obrs_Descripcion" DataValueField="ID"></asp:DropDownList>
                           </div>
                       </div>
                       <div class="col-md-6">
                           <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Persona (ID)" value="" id="txtPersonaID"/>
+                              <asp:DropDownList ID="ddlPersonas" runat="server" CssClass="form-control" DataTextField="NOMBRE" DataValueField="ID"></asp:DropDownList>
                           </div>
                           </div>
-                           <button class="btnRegister" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                           <button id="btnGuardar" runat="server" onserverclick="btnGuardar_ServerClick" class="btnRegister" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                Guardar
                            </button>                          
                       </div>
@@ -57,17 +57,17 @@
                    <asp:GridView ID="gvParticipantes" runat="server" AutoGenerateColumns="false" CssClass="table  table-striped table-border" AllowPaging ="true" OnPageIndexChanging="gvParticipantes_PageIndexChanging">
     <Columns>
         <asp:BoundField  HeaderText =" ID" DataField="ID" />
-        <asp:BoundField  HeaderText ="ROL" DataField="ROL" />
-         <asp:BoundField  HeaderText ="OBRA" DataField="OBRA" />
-          <asp:BoundField  HeaderText ="PERSONA_ID" DataField="PERSONA_ID" />
+        <asp:BoundField  HeaderText ="ROL" DataField="Prtp_Rol" />
+         <asp:BoundField  HeaderText ="OBRA" DataField="Obrs_Descripcion" />
+          <asp:BoundField  HeaderText ="PARTICIPANTE" DataField="NOMBRE" />
         <asp:TemplateField>
             <ItemTemplate>
-                 <asp:Button ID="btnEditar" runat="server" Text="Editar" CssClass="btn btn-success" />
+                <button id="btnEditar"  value="Editar" class="btn btn-success" onclick="Editar('<%# Eval("ID") %>');" >Editar</button>
             </ItemTemplate>
         </asp:TemplateField>
         <asp:TemplateField>
             <ItemTemplate>
-                 <asp:Button ID="btnEditar" runat="server" Text="Eliminar" CssClass="btn btn-danger" />
+                 <button id="btnEliminar"  value="Eliminar" class="btn btn-danger" onclick="Eliminar('<%# Eval("ID") %>');">Eliminar</button>
             </ItemTemplate>
         </asp:TemplateField>
     </Columns>
@@ -75,4 +75,5 @@
            </div>
        </div>
     </div>
+    <script src="Content/plugins/iziToast-master/dist/js/iziToast.js"></script>
 </asp:Content>

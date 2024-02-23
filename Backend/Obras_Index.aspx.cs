@@ -81,9 +81,12 @@ namespace FM_Tickets_WebForm
             }
             catch
             {
-                //iziToast
-                //Response.Write("<script language=javascript>iziToast.Error({title: 'Error', message: 'Hay otras tablas que depende de este campo',});</script>");
-                Response.Write("<script language=javascript>alert('Existen campos dependientes de esta obra');</script>");
+                string script = @"
+                                iziToast.error({
+                                    title: 'Fallido',
+                                    message: 'No se pudo ingresar el registro',
+                                });";
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "MyScript", script, true);
 
             }
         }

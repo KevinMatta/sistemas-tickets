@@ -19,6 +19,22 @@ namespace FM_Tickets_WebForm.Clases
             gv.DataBind();
         }
 
+        public void Eliminar(int id)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "[Teat].[sp_VentaDetalleEliminar]";
+            cmd.Parameters.Add(new SqlParameter("@VtDe_Id", id));
+            util.EjecutarSP(cmd);
+        }
+
+        public void CargarEncabezados(GridView gv)
+        {
+            DataSet ds = util.ObtenerDs("Teat.sp_VentasEncabezadoMostrar", "T");
+            gv.DataSource = ds.Tables["T"];
+            gv.DataBind();
+        }
+
         public void Insert(int cantidad, int ventaID, int seccionID, int funcionID, int creacion)
         {
             SqlCommand cmd = new SqlCommand();
@@ -48,18 +64,6 @@ namespace FM_Tickets_WebForm.Clases
             gv.DataBind();
         }
 
-        public void Estados_CargarDDL(DropDownList ddlEstados)
-        {
-            util.CargarDDL(ddlEstados, "Gene.sp_EstadosMostrar");
-
-        }
-
-        public void Ciudades_CargarDDL(int idEstado, DropDownList ddlCiudades)
-        {
-            util.CargarDDL(ddlCiudades, $"Gene.sp_CiudadesDdl '{idEstado}'");
-
-        }
-
         public void Teatros_CargarDDL(int idCiudad, DropDownList ddlTeatros)
         {
             util.CargarDDL(ddlTeatros, $"Teat.sp_TeatrosDdl '{idCiudad}'");
@@ -77,9 +81,9 @@ namespace FM_Tickets_WebForm.Clases
             util.CargarDDL(ddlSecciones, "Teat.sp_SeccionesDdl");
 
         }
-        public void Personas_CargarDDL(DropDownList ddlEstados)
+        public void Personas_CargarDDL(DropDownList ddlPersonas)
         {
-            util.CargarDDL(ddlEstados, "Gene.sp_PersonasMostrar");
+            util.CargarDDL(ddlPersonas, "Gene.sp_PersonasMostrar");
 
         }
 

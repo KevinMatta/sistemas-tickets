@@ -29,15 +29,15 @@
                                                         <input runat="server" type="text" class="form-control" placeholder="Nombre" value="" id="txtNombre" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <input runat="server" type="number" class="form-control" placeholder="Apellido" value="" id="txtApellido" />
+                                                        <input runat="server" type="text" class="form-control" placeholder="Puesto" value="" id="txtPuesto" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input runat="server" type="text" class="form-control" placeholder="Puesto" value="" id="txtPuesto" />
+                                                        <input runat="server" type="text" class="form-control" placeholder="Apellido" value="" id="txtApellido" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <input runat="server" type="text" class="form-control" placeholder="Salario" value="" id="txtsalario" />
+                                                        <input runat="server" type="number" class="form-control" placeholder="Salario" value="" id="txtsalario" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -60,7 +60,7 @@
                                                         <input runat="server" type="date" class="form-control" placeholder="nacimiento" value="" id="dateNacimiento" />
                                                     </div>
                                                 </div>
-                                                <button id="btnGuardar" runat="server" onserverclick="btnGuardar_ServerClick" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                                <button id="btnGuardar" runat="server" onserverclick="btnGuardar_ServerClick" class="btn btn-danger type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                                     Guardar
                                                 </button>
                                             </div>

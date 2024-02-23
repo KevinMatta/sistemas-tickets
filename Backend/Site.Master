@@ -39,7 +39,7 @@
   />
   <!-- iziToast izitoast/iziToast-master/dist/css/iziToast.css -->
   <link
-    href="Content/plugins/iziToast-master/dist/css/iziToast.css"
+    href="Content/iziToast-master/dist/css/iziToast.css"
     rel="stylesheet"
   />
 <!--Form-->
@@ -336,7 +336,7 @@
     <!-- DataTable -->
     <script src="https://cdn.datatables.net/1.11.3/js/jquery. s.min.js"></script>
     <!-- iziToast izitoast/iziToast-master/dist/js/iziToast.js-->
-    <script src="Content/plugins/iziToast-master/dist/js/iziToast.js"></script>
+    <script src="Content/iziToast-master/dist/js/iziToast.js"></script>
     <script src="Content/dist/js/Forma-pago.js"></script>
     <script src="Content/dist/js/TypeWritter.js"></script>
     <script>

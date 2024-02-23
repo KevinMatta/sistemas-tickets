@@ -57,8 +57,8 @@
                    <asp:GridView ID="gvFunciones" runat="server" AutoGenerateColumns="false" CssClass="table  table-striped table-border" AllowPaging ="true" OnPageIndexChanging="gvFunciones_PageIndexChanging">
     <Columns>
         <asp:BoundField  HeaderText =" ID" DataField="ID" />
-        <asp:BoundField  HeaderText ="FECHA" DataField="FECHA" />
-         <asp:BoundField  HeaderText ="OBRA_ID" DataField="OBRA_ID" />
+        <asp:BoundField  HeaderText ="FECHA" DataField="Fncs_Fecha" />
+         <asp:BoundField  HeaderText ="OBRA" DataField="Obrs_Descripcion" />
         <asp:TemplateField>
             <ItemTemplate>
                  <button id="btnEditar" class="btn btn-success" onclick="Editar('<%# Eval("ID") %>');">Editar</button>

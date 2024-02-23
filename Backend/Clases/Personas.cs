@@ -17,6 +17,15 @@ namespace FM_Tickets_WebForm.Clases
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
+
+        public string Buscar(string identidad)
+        {
+            string id;
+            DataSet ds = util.ObtenerDs($"[Gene].[sp_PersonaBuscarPorIdentidad] '{identidad}'", "T");
+            id = ds.Tables["T"].Rows[0]["ID"].ToString();
+            return id;
+        }
+
         public int Insert(string nombre, string apellido, string sexo, string fecha, int creacion, int est)
         {
             SqlCommand cmd = new SqlCommand();
@@ -39,6 +48,11 @@ namespace FM_Tickets_WebForm.Clases
         public void CargarDDL(DropDownList ddl)
         {
             util.CargarDDL(ddl, "Gene.sp_EstadosCivilesMostrar");
+        }
+
+        public void CargarPersonas(DropDownList ddl)
+        {
+            util.CargarDDL(ddl, "Gene.PersonasDdl");
         }
 
         public void Llenar(int id, out string nombre, out string apellido, out string sexo, out string fecha, out int estado)

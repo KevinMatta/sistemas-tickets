@@ -12,14 +12,15 @@ namespace FM_Tickets_WebForm.Clases
     public class Venta_Encabezado
     {
         Utilitarios util = new Utilitarios();
-        public void CargarGrid(GridView gv)
+
+        public void CargarEncabezados(GridView gv)
         {
-            DataSet ds = util.ObtenerDs("SELECT Secc_Id as ID , Secc_Descripcion as SECCION FROM  Teat.tbSecciones", "T");
+            DataSet ds = util.ObtenerDs("Teat.sp_VentasEncabezadoMostrar", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
 
-        public int Insert(int personaID, string creacion)
+        public int Insert(int personaID, int creacion)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
@@ -38,5 +39,17 @@ namespace FM_Tickets_WebForm.Clases
             int id = Convert.ToInt32(cmd.Parameters["@id"].Value);
             return id;
         }
+
+
+        public void Eliminar(int id)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "[Teat].[sp_VentaEncabezadoEliminar]";
+            cmd.Parameters.Add(new SqlParameter("Vnts_Id", id));
+            util.EjecutarSP(cmd);
+        }
+
+
     }
 }

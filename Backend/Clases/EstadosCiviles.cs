@@ -18,7 +18,10 @@ namespace FM_Tickets_WebForm.Clases
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }
-
+        public void CargarDDL(DropDownList ddl)
+        {
+            util.CargarDDL(ddl, "Gene.sp_EstadoCivilDdl");
+        }
         public void Insert(string descripcion, int creacion)
         {
             SqlCommand cmd = new SqlCommand();

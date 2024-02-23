@@ -121,31 +121,6 @@
 
         });
 
-            //$("body").on("click", ".btnEliminar", function () {
-            //    var obraId = $(this).closest("td").text();
-
-            //    $("#confirmacionModal").modal("show");
-
-            //    $("#btnConfirmarEliminar").off().on("click", function () {
-            //        __doPostBack("Eliminar", obraId);
-
-            //        $("#confirmacionModal").modal("hide");
-            //    });
-            //});
-
-
-        //function Eliminar(obraId) {
-        //    //alert('Hola');
-        //    var obraId = $(this).closest("td").text();
-
-        //    $("#confirmacionModal").modal("show");
-
-        //    $("#btnConfirmarEliminar").off().on("click", function () {
-        //        __doPostBack("Eliminar", obraId);
-
-        //        $("#confirmacionModal").modal("hide");
-        //    }
-
 
     </script>
 

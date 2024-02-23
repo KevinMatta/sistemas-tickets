@@ -60,7 +60,6 @@
         <asp:BoundField  HeaderText ="ID Usuario" DataField="ID" />
          <asp:BoundField  HeaderText ="NOMBRE" DataField="NOMBRE" />
         <asp:BoundField  HeaderText ="USUARIO" DataField="USUARIO" />
-        <asp:BoundField  HeaderText ="CLAVE" DataField="CLAVE" />
 
         <asp:TemplateField>
             <ItemTemplate>

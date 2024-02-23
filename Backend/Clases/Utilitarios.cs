@@ -35,6 +35,17 @@ namespace FM_Tickets_WebForm.Clases
             ddl.Items.Insert(0, new ListItem("Seleccione una opcion", "0"));
         }
 
+        public void CargarLista(ListBox lst, string sql)
+        {
+            DataSet ds = ObtenerDs(sql, "T");
+            lst.DataValueField = ds.Tables["T"].Columns[0].ColumnName;
+            lst.DataTextField = ds.Tables["T"].Columns[1].ColumnName;
+            lst.DataSource = ds.Tables["T"];
+            lst.DataBind();
+
+            lst.Items.Insert(0, new ListItem("Seleccionar...", string.Empty));
+        }
+
         public void EjecutarSP (SqlCommand cmd)
         {
             con = cnx.ObtenerCnx();

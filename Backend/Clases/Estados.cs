@@ -13,7 +13,7 @@ namespace FM_Tickets_WebForm.Clases
         Utilitarios util = new Utilitarios();
         public void CargarGrid(GridView gv)
         {
-            DataSet ds = util.ObtenerDs("sp_EstadosMostrar", "T");
+            DataSet ds = util.ObtenerDs("Gene.sp_EstadosMostrar", "T");
             gv.DataSource = ds.Tables["T"];
             gv.DataBind();
         }

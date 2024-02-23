@@ -244,6 +244,12 @@
     <Content Include="Content\docs\assets\plugins\popper\umd\popper-utils.min.js" />
     <Content Include="Content\docs\assets\plugins\popper\umd\popper.js" />
     <Content Include="Content\docs\assets\plugins\popper\umd\popper.min.js" />
+    <Content Include="Content\iziToast-master\dist\css\iziToast.css" />
+    <Content Include="Content\iziToast-master\dist\css\iziToast.min.css" />
+    <Content Include="Content\iziToast-master\dist\js\iziToast.js" />
+    <Content Include="Content\iziToast-master\dist\js\iziToast.min.js" />
+    <Content Include="Content\iziToast-master\gulpfile.js" />
+    <Content Include="Content\iziToast-master\src\js\iziToast.js" />
     <Content Include="Content\pages\404.html" />
     <Content Include="Content\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
     <Content Include="Content\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.min.css" />
@@ -2452,6 +2458,15 @@
     <Compile Include="Clases\Boletos.cs" />
     <Compile Include="Clases\Ciudades.cs" />
     <Compile Include="Clases\CnxBaseDatos.cs" />
+    <Content Include="Content\iziToast-master\bower.json" />
+    <Content Include="Content\iziToast-master\LICENSE" />
+    <Content Include="Content\iziToast-master\package.json" />
+    <Content Include="Content\iziToast-master\README.md" />
+    <Content Include="Content\iziToast-master\src\css\animations.styl" />
+    <Content Include="Content\iziToast-master\src\css\layouts.styl" />
+    <Content Include="Content\iziToast-master\src\css\style.styl" />
+    <Content Include="Content\iziToast-master\src\css\themes.styl" />
+    <Content Include="Content\iziToast-master\src\css\toast.styl" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2720,6 +2735,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Content\iziToast-master\types\index.d.ts" />
     <TypeScriptCompile Include="Content\plugins\iziToast-master\types\index.d.ts" />
   </ItemGroup>
   <PropertyGroup>

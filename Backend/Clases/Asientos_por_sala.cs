@@ -18,5 +18,10 @@ namespace FM_Tickets_WebForm.Clases
             gv.DataBind();
         }
 
+        public void CargarAsientosDDL(DropDownList ddl, int seccion, int funcion)
+        {
+            util.CargarDDL(ddl, $"Teat.tbAsientosList '{seccion}', '{funcion}'");
+        }
+
     }
 }

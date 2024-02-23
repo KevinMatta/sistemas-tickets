@@ -19,6 +19,7 @@ namespace FM_Tickets_WebForm.Clases
             {
                 resul = ds.Tables["T"].Rows[0]["NOMBRE"].ToString();
                 HttpContext.Current.Session["Usro_Id"] = ds.Tables["T"].Rows[0]["Usro_Id"].ToString();
+                HttpContext.Current.Session["Ciud_Id"] = ds.Tables["T"].Rows[0]["Ciud_Id"].ToString();
             }
             return resul;
         }
