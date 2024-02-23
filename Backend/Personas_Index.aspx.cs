@@ -77,34 +77,38 @@ namespace FM_Tickets_WebForm
 
         protected void Unnamed_ServerClick(object sender, EventArgs e)
         {
-            if (int.Parse(Session["Cont"].ToString()) == 1)
-            {
-                int id = int.Parse(Session["id"].ToString());
-                int usr = int.Parse(Session["Usro_Id"].ToString());
-                string nombre = txtNombre.Value;
-                string apellido = txtApellido.Value;
-                string sexo = txtSexo.Value;
-                string Fecha = txtFechaN.Value;
-                int Id_Estado = int.Parse(ddlEstadoCiviles.SelectedValue);
-                personas.actualizar(id,nombre, apellido, sexo, Fecha, Id_Estado, usr);
-                personas.CargarGrid(gvPersonas);
-                Session["Cont"] = 0;
-                Person_showCollapse.Value = "true";
-            }
-            else
-            {
-                string nombre = txtNombre.Value;
-                string apellido = txtApellido.Value;
-                string sexo = txtSexo.Value;
-                string Fecha = txtFechaN.Value;
-                int usr = int.Parse(Session["Usro_Id"].ToString());
-                int Id_Estado = int.Parse(ddlEstadoCiviles.SelectedValue);
-                personas.Insert(nombre, apellido, sexo, Fecha, Id_Estado, usr);
-                Person_showCollapse.Value = "true";
-                personas.CargarGrid(gvPersonas);
-            }
-        }
 
+            {
+                if (int.Parse(Session["Cont"].ToString()) == 1)
+                {
+                    int id = int.Parse(Session["id"].ToString());
+                    int usr = int.Parse(Session["Usro_Id"].ToString());
+                    string nombre = txtNombre.Value;
+                    string apellido = txtApellido.Value;
+                    string sexo = txtSexo.Value;
+                    string Fecha = txtFechaN.Value;
+                    int Id_Estado = int.Parse(ddlEstadoCiviles.SelectedValue);
+                    personas.actualizar(id, nombre, apellido, sexo, Fecha, Id_Estado, usr);
+                    personas.CargarGrid(gvPersonas);
+                    Session["Cont"] = 0;
+                    Person_showCollapse.Value = "true";
+                }
+                else
+                {
+                    string nombre = txtNombre.Value;
+                    string apellido = txtApellido.Value;
+                    string sexo = txtSexo.Value;
+                    string Fecha = txtFechaN.Value;
+                    int usr = int.Parse(Session["Usro_Id"].ToString());
+                    int Id_Estado = int.Parse(ddlEstadoCiviles.SelectedValue);
+                    personas.Insert(nombre, apellido, sexo, Fecha, Id_Estado, usr);
+                    Person_showCollapse.Value = "true";
+                    personas.CargarGrid(gvPersonas);
+
+                }
+            }
+
+        }
         protected void btnEditar_Click(object sender, EventArgs e)
         {
 

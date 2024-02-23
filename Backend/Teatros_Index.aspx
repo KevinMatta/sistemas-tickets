@@ -26,7 +26,7 @@
                   <div class="row register-form">
                       <div class="col-md-6">
                           <div class="form-group">
-                              <input runat="server" type="text" class="form-control" placeholder="Teatro (Nombre)" value="" id="txtTeatro" />
+                              <input runat="server" type="text" class="form-control teatro" placeholder="Teatro (Nombre)" value="" id="txtTeatro" />
                           </div>
                       </div>
                       <asp:UpdatePanel runat="server">
@@ -87,6 +87,16 @@
     $(document).ready(function () {
         if ($("[id$=CollapseTeatro]").val() == "true") {
             $("#collapseExample").removeClass("collapse");
+        }
+    });
+
+    //teatro
+    $("input.teatro").bind('keypress', function (event) {
+        var regex = new RegExp("^[a-zA-Z ]+$");
+        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        if (!regex.test(key)) {
+            event.preventDefault();
+            return false;
         }
     });
 </script>

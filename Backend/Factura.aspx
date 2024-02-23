@@ -18,13 +18,13 @@
                                             <div class="row register-form">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="number" class="form-control" placeholder="Numero de identidad" value="" id="txtId" runat="server" />
+                                                        <input type="number" class="form-control identidad" placeholder="Numero de identidad" value="" id="txtId" runat="server" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder=" Nombre" value="" id="txtNombre" runat="server" />
+                                                        <input type="text" class="form-control nombre" placeholder=" Nombre" value="" id="txtNombre" runat="server" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder=" Sexo" value="" id="txtSexo" runat="server" />
+                                                        <input type="text" class="form-control sexo" placeholder=" Sexo" value="" id="txtSexo" runat="server" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -179,7 +179,46 @@
             </div>
         </div>
     </div>
+     
+    <script>
+        $("input.nombre").bind('keypress', function (event) {
+            var regex = new RegExp("^[a-zA-Z ]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
 
+
+        $("input.sexo").bind('keypress', function (event) {
+            var regex = new RegExp("^[a-zA-Z ]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+
+        $("input.identidad").bind('keypress', function (event) {
+            var regex = new RegExp("^[0-9]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+
+        //nmbCantidad
+        $("input.nmbCantidad").bind('keypress', function (event) {
+            var regex = new RegExp("^[0-9]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+    </script>
 
 
 </asp:Content>

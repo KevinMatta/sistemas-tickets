@@ -27,9 +27,8 @@
                                             <div class="row register-form">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Sala (Nombre)" value="" id="txtSala" runat="server" />
+                                                        <input type="text" class="form-control sala" placeholder="Sala (Nombre)" value="" id="txtSala" runat="server" />
                                                     </div>
-
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -88,6 +87,16 @@
         $(document).ready(function () {
             if ($("[id$=Salas_Colapse]").val() == "true") {
                 $("#collapseExample").removeClass("collapse");
+            }
+        });
+
+        //sala
+        $("input.sala").bind('keypress', function (event) {
+            var regex = new RegExp("^[a-zA-Z ]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
             }
         });
     </script>

@@ -23,16 +23,16 @@
                                 <div class="col-md-9 register-right">
                                     <div class="tab-content" id="myTabContent">
                                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                            <h3 class="register-heading">Estadps</h3>
+                                            <h3 class="register-heading">Estados</h3>
                                             <div class="row register-form">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input runat="server" type="text" class="form-control" placeholder="Estado (ID)" value="" id="txtEstadoID" />
+                                                        <input runat="server" type="text" class="form-control codigo" placeholder="Estado (Codigo)" value="" id="txtEstadoID" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input runat="server" type="text" class="form-control" placeholder="Estado (Nombre)" value="" id="txtEstado" />
+                                                        <input runat="server" type="text" class="form-control nombreEst" placeholder="Estado (Nombre)" value="" id="txtEstado" />
                                                     </div>
                                                 </div>
                                                 <button runat="server" id="btnGuardar" onserverclick="btnGuardar_ServerClick" class="btnRegister" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -80,6 +80,23 @@
             }
         });
 
+        $("input.codigo").bind('keypress', function (event) {
+            var regex = new RegExp("^[a-zA-Z ]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+
+        $("input.nombreEst").bind('keypress', function (event) {
+            var regex = new RegExp("^[a-zA-Z ]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
 
     </script>
 </asp:Content>

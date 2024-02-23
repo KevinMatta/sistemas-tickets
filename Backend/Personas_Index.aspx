@@ -27,10 +27,10 @@
                                             <div class="row register-form">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Nombre (ID)" value="" id="txtNombre" runat="server" />
+                                                        <input type="text" class="form-control nombre " placeholder="Nombre" value="" id="txtNombre" runat="server" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder=" Apellido" value="" id="txtApellido" runat="server" />
+                                                        <input type="text" class="form-control apellido" placeholder=" Apellido" value="" id="txtApellido" runat="server" />
                                                     </div>
                                                     <div class="form-group">
                                                         <asp:DropDownList ID="ddlEstadoCiviles" runat="server" CssClass="form-control"></asp:DropDownList>
@@ -38,7 +38,10 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder=" Sexo" value="" id="txtSexo" runat="server" />
+                                                        <input type="number" class="form-control identidad" placeholder="Identidad" value="" id="txtIdentidad" runat="server" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control sexo" placeholder=" Sexo" value="" id="txtSexo" runat="server" />
                                                     </div>
                                                     <div class="form-group">
                                                         <input type="date" class="form-control" placeholder=" Fecha de nacimiento" value="" id="txtFechaN" runat="server" />
@@ -100,6 +103,44 @@
                 $("#collapseExample").removeClass("collapse");
             }
         });
+
+        $("input.nombre").bind('keypress', function (event) {
+            var regex = new RegExp("^[a-zA-Z ]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+
+        $("input.apellido").bind('keypress', function (event) {
+            var regex = new RegExp("^[a-zA-Z ]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+
+        $("input.sexo").bind('keypress', function (event) {
+            var regex = new RegExp("^[a-zA-Z ]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        }); 
+
+        $("input.identidad").bind('keypress', function (event) {
+            var regex = new RegExp("^[0-9]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        });
+
     </script>
+
 
 </asp:Content>

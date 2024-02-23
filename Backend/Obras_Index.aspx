@@ -97,14 +97,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
     <script src="Content/plugins/iziToast-master/dist/js/iziToast.js"></script>
     <script src="Content/plugins/jquery/jquery.min.js"></script>
     <script>

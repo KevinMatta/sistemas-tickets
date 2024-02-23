@@ -26,7 +26,7 @@
                                             <div class="row register-form">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" runat="server" placeholder="Descripcion" value="" id="txtDescripcion" />
+                                                        <input type="text" class="form-control descrip" runat="server" placeholder="Descripcion" value="" id="txtDescripcion" />
                                                     </div>
 
                                                 </div>
@@ -80,6 +80,15 @@
         $(document).ready(function () {
             if ($("[id$=Hf_secciones]").val() == "true") {
                 $("#collapseExample").removeClass("collapse");
+            }
+        });
+
+        $("input.descrip").bind('keypress', function (event) {
+            var regex = new RegExp("^[a-zA-Z ]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
             }
         });
     </script>

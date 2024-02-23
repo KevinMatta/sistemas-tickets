@@ -27,7 +27,7 @@
                                             <div class="row register-form">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control" placeholder="Ciudad (Nombre)" value="" id="txtNombreCiudad" runat="server" />
+                                                        <input type="text" class="form-control ciudad" placeholder="Ciudad (Nombre)" value="" id="txtNombreCiudad" runat="server" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -84,6 +84,15 @@
         $(document).ready(function () {
             if ($("[id$=CollapseCiudades]").val() == "true") {
                 $("#collapseExample").removeClass("collapse");
+            }
+        });
+
+        $("input.ciudad").bind('keypress', function (event) {
+            var regex = new RegExp("^[a-zA-Z ]+$");
+            var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
             }
         });
     </script>

@@ -270,27 +270,22 @@
 </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <!-- /.content-header -->
-              <div class="card">
-                <div class="card-body">
-                    <form runat="server">
-                   <div class="container body-content">
-                       <asp:ScriptManager runat="server"></asp:ScriptManager>
-                  <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                  </asp:ContentPlaceHolder>
-
-
-                       
-
-
-                  </div>
-                    </form>         
-                 </div>
-             </div>
-    </section>
-      </div><!-- /.content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <!-- /.content-header -->
+        <div class="card">
+            <div class="card-body">
+                <form runat="server">
+                    <div class="container body-content">
+                        <asp:ScriptManager runat="server"></asp:ScriptManager>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </section>
+    </div><!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
